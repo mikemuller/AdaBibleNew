@@ -1,0 +1,51 @@
+<header class="ada-header ada-header--dark">
+    <div class="ada-header__inner">
+        <a class="ada-header__brand" href="/">Brand</a>
+        <nav class="ada-header__nav">
+            <a class="ada-header__link" href="/about">About</a>
+            <a class="ada-header__link" href="/locations">Locations</a>
+        </nav>
+        <div class="ada-header__actions">
+            <a class="ada-header__link" href="https://ada-bible.vercel.app/">Main Site</a>
+            {% if CurrentPerson.FullName %}
+            <a class="ada-header__link" href="/MyAccount">{{ CurrentPerson.FullName }}</a>
+            {% else %}
+            <a class="ada-header__link" href="/">Please Log In</a>
+
+            {% endif %}
+            <div class="ada-header__icon--buttons">
+                <button class="Search_searchButton--link">
+                    <svg class="Search_searchIcon Header_searchIcon" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0%" stop-color="#2ba9a5"></stop>
+                                <stop offset="100%" stop-color="#bbd162"></stop>
+                            </linearGradient>
+                        </defs>
+                        <rect x="1" y="1" width="38" height="38" rx="19" class="Search_bg__h8Wus"></rect>
+                        <rect x="1" y="1" width="38" height="38" rx="19" stroke="white" stroke-width="1"></rect>
+                        <circle cx="19" cy="19" r="6" stroke="white" stroke-width="1"></circle>
+                        <path d="M24 24L28 28" stroke="white" stroke-width="1" stroke-linecap="round"></path>
+                    </svg>
+                </button>
+                <button class="MenuIcon--link">
+                    <svg class="Menu_menuIcon Header_menuIcon width=" 40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#2ba9a5"></stop>
+                            <stop offset="100%" stop-color="#bbd162"></stop>
+                        </linearGradient>
+                        <rect x="1" y="1" width="38" height="38" rx="19" class="Menu_bg__E9dzi"></rect>
+                        <rect x="1" y="1" width="38" height="38" rx="19" stroke="white" stroke-width="1" fill="none"></rect>
+                        <g style="transform-origin: 50% 50%; transform-box: fill-box; transition: transform 300ms, translate 300ms; transform: translateY(0px) rotate(0deg);">
+                            <path d="M9 16H31" stroke="white" stroke-width="1" stroke-linecap="round"></path>
+                        </g>
+                        <g style="transform-origin: 50% 50%; transform-box: fill-box; transition: transform 300ms, translate 300ms; transform: translateY(0px) rotate(0deg);">
+                            <path d="M9 25H31" stroke="white" stroke-width="1" stroke-linecap="round"></path>
+                        </g>
+                    </svg>
+                </button>
+
+            </div>
+        </div>
+    </div>
+</header>

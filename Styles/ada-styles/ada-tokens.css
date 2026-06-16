@@ -1,0 +1,61 @@
+:root {
+  --ada-color-black: #1e1e1e;
+  --ada-color-main: #262629;
+  --ada-color-charcoal: #313133;
+  --ada-color-gray: #545454;
+  --ada-color-light-gray: #a59f9f;
+  --ada-color-white: #fffdf1;
+  --ada-color-off-white: #f5f3e8;
+  --ada-color-blue: #194a7b;
+  --ada-color-green-blue: #2ba9a5;
+  --ada-color-light-green: #d5ece1;
+  --ada-color-yellow: #bbd162;
+
+  --ada-color-bg: var(--ada-color-main);
+  --ada-color-text: var(--ada-color-white);
+  --ada-color-heading: var(--ada-color-white);
+  --ada-color-link: var(--ada-color-green-blue);
+  --ada-color-surface: var(--ada-color-off-white);
+  --ada-color-surface-text: var(--ada-color-charcoal);
+  --ada-color-border: rgb(255 253 241 / 28%);
+
+  --ada-font-heading: 'basic-sans', 'Montserrat', serif;
+  --ada-font-display: 'Montserrat', 'basic-sans', serif;
+  --ada-font-body: 'basic-sans', 'Montserrat', serif;
+
+  --ada-max-width: 1920px;
+  --ada-content-max-width: 1440px;
+  --ada-shell-padding-x: clamp(24px, 4vw, 62px);
+  --ada-shell-padding-x-mobile: 20px;
+  --ada-radius: 10px;
+  --ada-radius-pill: 9999px;
+
+  --ada-space-3xs: 6px;
+  --ada-space-2xs: 10px;
+  --ada-space-xs: 12px;
+  --ada-space-sm: 16px;
+  --ada-space-md: 24px;
+  --ada-space-lg: 36px;
+  --ada-space-xl: 48px;
+  --ada-space-2xl: 64px;
+
+  --ada-shadow-soft: 0 0 11px rgb(43 41 41 / 15%);
+
+  --ada-header-stack-height: 129px;
+  --narrow-gutter-padding: calc(60px * 4);
+  --radius: 10px;
+}
+
+.ada-theme-light {
+  --ada-color-bg: var(--ada-color-off-white);
+  --ada-color-text: var(--ada-color-charcoal);
+  --ada-color-heading: var(--ada-color-charcoal);
+  --ada-color-border: rgb(49 49 51 / 24%);
+}
+
+.ada-theme-dark {
+  --ada-color-bg: var(--ada-color-main);
+  --ada-color-text: var(--ada-color-white);
+  --ada-color-heading: var(--ada-color-white);
+  --ada-color-border: rgb(255 253 241 / 28%);
+}

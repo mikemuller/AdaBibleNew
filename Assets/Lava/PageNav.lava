@@ -1,0 +1,12 @@
+{% if Page.DisplayChildPages and Page.Pages != empty %}
+<div class="four-buttons">
+		{% for childPage in Page.Pages %}
+				<a href="{{ childPage.Url }}" class="btn anchor-link white {% if childPage.Current %}active{% endif %}">{{ childPage.Title }}</a>
+        {% endfor %}
+        {% for includedPage in IncludePageList %}
+            {% assign path = 'Global' | Page:'Path' %}
+            {% assign attributeParts = includedPage | PropertyToKeyValue %}
+                <a href="{{ attributeParts.Value }}" class="btn anchor-link white {% if path == attributeParts.Value %}active{% endif %}">{{ attributeParts.Key }}</a>
+        {% endfor %}
+    </div>
+{% endif %}

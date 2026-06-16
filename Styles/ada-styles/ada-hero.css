@@ -1,0 +1,280 @@
+#hero--mediumImpact {}
+
+
+.MediumImpact_heroShellDark {
+  --medium-hero-overlap-fill: var(--ada-color-off-white);
+}
+
+.MediumImpact_heroShellWithMedia {
+  --medium-hero-overlap: 53px;
+}
+
+.MediumImpact_heroShell {
+  --medium-hero-overlap: 0px;
+  --medium-hero-overlap-fill: var(--ada-color-off-white);
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  overflow: visible;
+  z-index: 10;
+  padding-bottom: 56px;
+}
+
+@media (max-width: 1024px) {
+  --medium-hero-overlap: calc((100vw - 20px) * 0.2504672897);
+}
+
+.MediumImpact_backgroundPatternImage {
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center;
+}
+
+.MediumImpact_mediumImpactHero {
+  display: flex;
+  position: relative;
+  overflow: visible;
+  justify-content: space-between;
+  padding: var(--ada-header-stack-height) 0 0 0;
+  width: 100%;
+  gap: 208px;
+}
+
+@media (max-width: 1024px) {
+  .MediumImpact_mediumImpactHero {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 48px;
+    padding-top: 48px;
+  }
+}
+
+
+.MediumImpact_heroStrip {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 113px;
+  z-index: 1;
+}
+
+@media (max-width: 1024px) {
+  .MediumImpact_heroStrip {
+    height: calc(56px + 33vw);
+  }
+}
+
+.MediumImpact_backgroundPattern {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.MediumImpact_heroContent {
+  box-sizing: border-box !important;
+  position: relative !important;
+  z-index: 2 !important;
+  overflow: visible !important;
+}
+
+@media (max-width: 1024px) {
+  .MediumImpact_heroContent {
+    width: 100% !important;
+    max-width: none !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    margin: 0 auto !important;
+  }
+}
+
+.MediumImpact_content {
+  position: relative;
+  z-index: 1;
+  padding: 53px 0 100px;
+  width: 43%;
+}
+
+@media (max-width: 1024px) {
+  .MediumImpact_content {
+    width: 100% !important;
+    padding: 0;
+  }
+}
+
+.MediumImpact_dark {
+  color: #fff;
+}
+
+.Gutter_narrow {
+  width: calc(100% - var(--ada-menu-outline-padding) * 2);
+  max-width: calc(var(--ada-content-max-width) + var(--header-nav-padding-x) * 2);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--ada-header-nav-padding-x);
+  padding-right: var(--ada-header-nav-padding-x);
+  box-sizing: border-box;
+}
+
+.Gutter_gutter {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+  max-width: var(--ada-content-max-width);
+  margin: 0 auto;
+  position: unset;
+  isolation: isolate;
+  z-index: 5;
+}
+
+.ContentField_contentField {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.MediumImpact_imageWrap {
+  position: relative;
+  width: 57%;
+  aspect-ratio: 1.59;
+  margin-top: 53px;
+  margin-right: calc(var(--narrow-gutter-padding) * -1);
+  border-radius: 10px;
+}
+
+@media (max-width: 1024px) {
+  .MediumImpact_imageWrap {
+    width: 100%;
+    margin-right: -24px;
+    margin-top: 0;
+  }
+}
+
+.GradientBg_gradientPattern.GradientBg_hero.GradientBg_right {
+  top: -40px;
+  right: -40px;
+}
+
+@media (max-width: 1024px) {
+  .GradientBg_gradientPattern.GradientBg_hero.GradientBg_right {
+    top: -20px;
+    right: 0;
+  }
+}
+
+
+.GradientBg_gradientPattern.GradientBg_right.GradientBg_gradientPattern {
+  position: absolute;
+  border-radius: var(--radius);
+  z-index: -1;
+}
+
+
+
+.StripePattern_blackBg {
+  position: absolute;
+  inset: 0;
+  background-color: var(--ada-color-main);
+}
+
+.StripePattern_stripePattern {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #2ba9a5, #bbd162);
+  position: relative;
+  overflow: hidden;
+}
+
+.StripePattern_stripePattern:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: .85;
+  background-image: repeating-linear-gradient(115deg, rgba(255, 255, 255, .35), rgba(255, 255, 255, .35) 1px, transparent 0, transparent 5px);
+  pointer-events: none;
+}
+
+.MediumImpact_image {
+  position: relative;
+  height: 100%;
+  min-height: 0;
+  max-height: none;
+  width: 100%;
+  z-index: 3;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+@media (max-width: 1024px) {
+  .MediumImpact_image {
+    height: 100%;
+    min-height: 0;
+    max-height: none;
+  }
+}
+
+@media (max-width: 1920px) {
+  .MediumImpact_image {
+    border-radius: 10px 0 0 10px;
+  }
+}
+
+.MediumImpact_image .MediumImpact_media,
+.MediumImpact_image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center;
+}
+
+#template_bgImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center;
+  background-size: cover;
+  background-position: center;
+}
+
+
+.MediumImpact_content h2,
+.MediumImpact_content h2>em {
+  font-weight: 600;
+  font-size: clamp(42px, 3.5vw + 26px, 58px);
+  line-height: clamp(48px, 2.5vw + 34px, 60px);
+  letter-spacing: 0;
+}
+
+
+.RichText_gradientHighlightDark {
+  background-image: linear-gradient(90deg, #6c8722, #145755);
+  background-repeat: no-repeat;
+  background-size: 100% .55em;
+  background-position: 0 88%;
+  mix-blend-mode: hard-light;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding: 0 .12em;
+}
+
+h2 .RichText_gradientHighlight {
+  font-size: clamp(42px, 3.5vw + 26px, 58px);
+  line-height: clamp(48px, 2.5vw + 34px, 60px);
+}
+
+h1 .RichText_gradientHighlight,
+h2 .RichText_gradientHighlight {
+  font-family: basic-sans, serif;
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: 0;
+}
