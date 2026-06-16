@@ -41613,7 +41613,7 @@ ol.reset > li {
   right: 0;
   position: absolute;
   margin: 0 auto;
-  z-index: 1100;
+  z-index: 1000;
   transition: all 0.3s ease-out;
   transition: transform 0.3s ease;
   background-color: var(--ada-color-main);
@@ -42452,7 +42452,6 @@ input[type='submit'],
   border: 3px solid #262629;
   color: #fff;
   background: #262629;
-  margin: 10px;
   padding: 12px 20px;
   width: auto;
   font-size: 14px;
