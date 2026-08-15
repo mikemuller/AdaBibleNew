@@ -17,6 +17,14 @@
       "oO" : 1,
       "oS" : 1
     },
+    "\/.gitignore" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/.gitignore",
+      "oF" : 0
+    },
     "\/.vscode\/sftp.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -809,7 +817,7 @@
       "co" : 0,
       "ft" : 16,
       "ma" : 0,
-      "oA" : 0,
+      "oA" : 1,
       "oAP" : "\/Styles\/ada-styles\/ada-foundation-min.css",
       "oF" : 0,
       "pg" : 0
@@ -943,8 +951,8 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/Styles\/ada.css",
-      "oF" : 2,
+      "oAP" : "\/Styles\/scss\/ada.css",
+      "oF" : 0,
       "oS" : 0,
       "pg" : 0
     },
