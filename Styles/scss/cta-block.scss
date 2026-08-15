@@ -1,0 +1,111 @@
+// Call To Action block ("Intro" section), extracted from AdaBiblePayload:
+// src/blocks/CallToActionBlock/Component.tsx + index.module.scss, as seen
+// live at adabible.org/new-to-ada-bible (section id="Intro").
+//
+// This instance: backgroundColor "white", ctaVariantTwo false (the "v1"
+// layout branch) — heading + description stacked, no links in this
+// particular block, decorative topography line pattern behind it (source
+// renders this pattern as a hardcoded inline SVG path via
+// src/components/GradientPatterns/CtaPattern; reproduced here as a static
+// asset — see Assets/images/new-to-ada-bible-cta-pattern.svg — rather than
+// inlining ~940KB of path data).
+//
+// Everything below is nested under .ctaBlock — generic names like .content
+// and .links are reused across several of these page blocks, and if left
+// unscoped at the top level they leak into unrelated elements sharing the
+// same class name elsewhere on the page (this previously broke the hero's
+// own .content column, squeezing its breadcrumb down to a two-line wrap).
+
+@use './shared' as *;
+
+.ctaBlock {
+  &.white {
+    color: #313133;
+
+    // Sizing/family/weight for this h2 comes from the global `h2 { }` rule
+    // in _shared.scss (matching the source's own global heading styles) —
+    // only the color override is block-specific.
+    .headline .html :is(p, h2) {
+      color: #262629;
+      margin: 0;
+    }
+
+    .descriptionRichText :is(p, li) {
+      @include body-large-20;
+      color: #313133;
+    }
+
+    .descriptionRichText p {
+      margin: 0;
+      max-width: 739px;
+    }
+  }
+
+  .ctaWrap {
+    padding: var(--gap) var(--small-gap);
+    position: relative;
+    overflow: clip;
+    width: 100%;
+    border-radius: var(--radius);
+  }
+
+  .ctaBg {
+    position: absolute;
+    inset: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .headline {
+    width: 100%;
+    max-width: 1050px;
+    padding-bottom: var(--gap);
+
+    * {
+      margin: 0;
+    }
+  }
+
+  .contentWrap {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+
+  .content {
+    display: flex;
+    align-items: center;
+    gap: var(--gap);
+    padding-top: 4px;
+    width: fit-content;
+    margin-left: auto;
+
+    @include mid-break {
+      flex-direction: column;
+      align-items: unset;
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+
+  .links {
+    @include list-reset;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-left: auto;
+    flex-shrink: 0;
+
+    @include mid-break {
+      margin-left: 0;
+    }
+  }
+}

@@ -1,0 +1,176 @@
+// Map block ("Locations" section), extracted from AdaBiblePayload:
+// src/blocks/MapBlock/MapBlockClient.tsx + index.module.scss, as seen live
+// at adabible.org/new-to-ada-bible (section id="Locations"). Renders through
+// ImageContentBlock (see image-content-block.scss for the shared base
+// layout) with the location pins/list as an imageOverlay + contentOverride.
+//
+// This instance: backgroundColor "black" (→ .dark below), contentAlign
+// "contentOnRight" (image on the left; the block reverses via
+// .imageContentBlock.rowReverse), all six locations shown as pins.
+// Pin percentage positions and the six location hrefs are pulled live.
+//
+// Everything nested under .mapBlock so generic names like .pin/.contentColumn
+// don't leak into unrelated elements elsewhere on the page.
+
+@use './shared' as *;
+
+.mapBlock {
+  gap: clamp(32px, 5.8vw, 80px);
+
+  picture,
+  img {
+    display: block;
+  }
+
+  .contentColumn {
+    display: flex;
+    flex-direction: column;
+    max-width: 560px;
+    justify-content: center;
+  }
+
+  .defaultMapImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .mapHeading :is(h1, h2, h3, h4, h5, h6, p) {
+    @include h2;
+    color: #1c2334;
+    max-width: none;
+  }
+
+  .mapDescription :is(p, li, h1, h2, h3, h4, h5, h6) {
+    @include body-large-20;
+    color: #2f3035;
+    max-width: 520px;
+
+    @include mid-break {
+      max-width: none;
+    }
+  }
+
+  .locationList {
+    @include list-reset;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: clamp(6px, 1vw, 10px);
+  }
+
+  .locationButton {
+    display: block;
+    width: 100%;
+    border-radius: 7px;
+    border: 1px solid transparent;
+    padding: 10px 14px;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition:
+      background-color 180ms ease,
+      color 180ms ease,
+      border-color 180ms ease,
+      transform 180ms ease;
+    @include button-label-basic-sans;
+    margin: 0 !important;
+
+    &:hover,
+    &:focus-visible {
+      transform: translateY(-1px);
+    }
+
+    &:focus-visible {
+      outline: 2px solid #2ba9a5;
+      outline-offset: 1px;
+    }
+  }
+
+  .pinLayer {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .pin {
+    position: absolute;
+    transform: translate(-50%, -100%);
+    transform-origin: 50% 100%;
+    pointer-events: auto;
+    transition:
+      z-index 180ms ease,
+      filter 180ms ease,
+      transform 180ms ease;
+
+    &:hover,
+    &:focus-within {
+      z-index: 3;
+      transform: translate(-50%, -100%) scale(1.1);
+      filter: drop-shadow(0 0 16px rgba(43, 169, 165, 0.62));
+    }
+  }
+
+  .pinLink {
+    display: block;
+
+    &:focus-visible {
+      outline: 2px solid #2ba9a5;
+      outline-offset: 2px;
+      border-radius: 8px;
+    }
+  }
+
+  .pinIcon {
+    display: block;
+  }
+
+  // dark = backgroundColor "black" (this instance)
+  &.dark {
+    .mapHeading :is(h1, h2, h3, h4, h5, h6, p) {
+      color: #f5f3e8;
+    }
+
+    .mapDescription :is(p, li, h1, h2, h3, h4, h5, h6) {
+      color: #e7e6dd;
+    }
+
+    .locationButton {
+      background: #f5f3e8;
+      border-color: #56c8c4;
+      color: #1b232c;
+
+      &:hover,
+      &:focus-visible {
+        background: #56c8c4;
+        border-color: #56c8c4;
+        color: #152028;
+      }
+    }
+  }
+
+  &.light {
+    .locationButton {
+      background: #272b31;
+      border-color: #2ba9a5;
+      color: #f5f3e8;
+
+      &:hover,
+      &:focus-visible {
+        background: #2ba9a5;
+        border-color: #2ba9a5;
+        color: #20242b;
+      }
+    }
+  }
+
+  @include mid-break {
+    gap: 24px;
+
+    .contentColumn {
+      max-width: none;
+    }
+  }
+}

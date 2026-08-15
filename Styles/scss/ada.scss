@@ -3,5 +3,17 @@
 
 @use 'header';
 @use 'megamenu';
-@use 'medium-impact-hero';
+@use 'medium-impact-hero'; // also reused as-is by the new-to-ada-bible hero below
 @use 'footer';
+
+// New to Ada Bible page (adabible.org/new-to-ada-bible) content blocks.
+// cta-block/basic-content-block/etc. are listed in the same order they
+// appear on the page; image-content-block is the shared base that both
+// map-block and the plain "Next Steps" ImageContentBlock instance build on.
+@use 'cta-block';
+@use 'basic-content-block';
+@use 'image-content-block';
+@use 'map-block';
+@use 'card-block';
+@use 'dropdown-info-block';
+@use 'image-slider-block';

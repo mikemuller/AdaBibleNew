@@ -132,6 +132,16 @@
       "q" : 100,
       "rq" : 75
     },
+    "\/Assets\/images\/location-pin-icon.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/Assets\/images\/location-pin-icon.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
+      "prP" : 0
+    },
     "\/Assets\/images\/logo-2018-white.svg" : {
       "ft" : 2097152,
       "miP" : 0,
@@ -152,6 +162,19 @@
       "plM" : 52780316221407,
       "prP" : 0
     },
+    "\/Assets\/images\/map-block-image.png" : {
+      "ft" : 32768,
+      "iS" : 1236251,
+      "oA" : 0,
+      "oAP" : "\/Assets\/images\/map-block-image.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
+    },
     "\/Assets\/images\/medium-impact-hero-background.svg" : {
       "ft" : 2097152,
       "miP" : 0,
@@ -161,6 +184,120 @@
       "opt" : 0,
       "plM" : 52780316221407,
       "prP" : 0
+    },
+    "\/Assets\/images\/new-to-ada-bible-cta-pattern.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/Assets\/images\/new-to-ada-bible-cta-pattern.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
+      "prP" : 0
+    },
+    "\/Assets\/images\/new-to-ada-bible-discover-ada.jpg" : {
+      "ft" : 16384,
+      "iS" : 394757,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/Assets\/images\/new-to-ada-bible-discover-ada.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/Assets\/images\/new-to-ada-bible-experience-event.jpg" : {
+      "ft" : 16384,
+      "iS" : 143360,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/Assets\/images\/new-to-ada-bible-experience-event.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/Assets\/images\/new-to-ada-bible-experience-groups.jpg" : {
+      "ft" : 16384,
+      "iS" : 60574,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/Assets\/images\/new-to-ada-bible-experience-groups.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/Assets\/images\/new-to-ada-bible-experience-learn-more.jpg" : {
+      "ft" : 16384,
+      "iS" : 39673,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/Assets\/images\/new-to-ada-bible-experience-learn-more.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/Assets\/images\/new-to-ada-bible-experience-ministries.jpg" : {
+      "ft" : 16384,
+      "iS" : 221184,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/Assets\/images\/new-to-ada-bible-experience-ministries.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/Assets\/images\/new-to-ada-bible-hero.jpg" : {
+      "ft" : 16384,
+      "iS" : 452674,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/Assets\/images\/new-to-ada-bible-hero.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/Assets\/images\/new-to-ada-bible-next-steps.jpg" : {
+      "ft" : 16384,
+      "iS" : 397813,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/Assets\/images\/new-to-ada-bible-next-steps.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/Assets\/images\/new-to-ada-bible-plan-a-visit.jpg" : {
+      "ft" : 16384,
+      "iS" : 435195,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/Assets\/images\/new-to-ada-bible-plan-a-visit.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
     },
     "\/Assets\/images\/search-blue.svg" : {
       "ft" : 2097152,
@@ -714,6 +851,17 @@
       "sC" : 3,
       "tS" : 0
     },
+    "\/Scripts\/new-to-ada-bible.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/Scripts\/new-to-ada-bible-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
+    },
     "\/Styles\/_css-overrides.less" : {
       "aP" : 0,
       "bl" : 0,
@@ -785,6 +933,18 @@
       "rwU" : 0,
       "sI" : 0,
       "sU" : 0
+    },
+    "\/Styles\/ada-min.css" : {
+      "aP" : 1,
+      "bl" : 0,
+      "ci" : 0,
+      "co" : 0,
+      "ft" : 16,
+      "ma" : 0,
+      "oA" : 0,
+      "oAP" : "\/Styles\/ada-min-min.css",
+      "oF" : 0,
+      "pg" : 0
     },
     "\/Styles\/ada-styles\/ada-base.css" : {
       "aP" : 1,
@@ -956,6 +1116,58 @@
       "oS" : 0,
       "pg" : 0
     },
+    "\/Styles\/scss\/basic-content-block.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/Styles\/scss\/basic-content-block.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0
+    },
+    "\/Styles\/scss\/card-block.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/Styles\/scss\/card-block.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0
+    },
+    "\/Styles\/scss\/cta-block.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/Styles\/scss\/cta-block.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0
+    },
+    "\/Styles\/scss\/dropdown-info-block.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/Styles\/scss\/dropdown-info-block.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0
+    },
     "\/Styles\/scss\/footer.scss" : {
       "aP" : 0,
       "bl" : 0,
@@ -978,6 +1190,45 @@
       "ma" : 0,
       "oA" : 1,
       "oAP" : "\/Styles\/scss\/header.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0
+    },
+    "\/Styles\/scss\/image-content-block.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/Styles\/scss\/image-content-block.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0
+    },
+    "\/Styles\/scss\/image-slider-block.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/Styles\/scss\/image-slider-block.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0
+    },
+    "\/Styles\/scss\/map-block.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/Styles\/scss\/map-block.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0

@@ -1,0 +1,107 @@
+// Dropdown Info block ("What to Expect" FAQ section), extracted from
+// AdaBiblePayload: src/blocks/DropdownInfoBlock/Client.tsx +
+// index.module.scss, as seen live at adabible.org/new-to-ada-bible
+// (section id="Common Questions"). Accordion open/close behavior is wired
+// up in Scripts/new-to-ada-bible.js (single-open, matching the source's
+// `openIndex` state).
+//
+// This instance: backgroundColor "black", contentField.subheading set
+// (→ the .subheading top padding on the question list). Everything nested
+// under .dropdownInfoBlock for consistency with the other new block
+// partials, even though these particular names are already prefixed enough
+// to be low collision risk.
+
+@use './shared' as *;
+
+.dropdownInfoBlock {
+  display: flex;
+  gap: 64px;
+
+  &.black {
+    color: white;
+
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    li,
+    span,
+    a {
+      color: inherit;
+    }
+  }
+
+  @include mid-break {
+    flex-direction: column;
+    gap: var(--gap);
+  }
+
+  .dropdownContent {
+    width: 100%;
+  }
+
+  .dropdownArray {
+    @include list-reset;
+    width: 100%;
+
+    &.subheading {
+      padding-top: 48px;
+
+      @include mid-break {
+        padding-top: 0;
+      }
+    }
+  }
+
+  .dropdownItem {
+    padding-bottom: 36px;
+
+    &:not(:first-child) {
+      padding-top: 36px;
+    }
+
+    button {
+      margin: 0;
+      padding: 0;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .dropdownLabel {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 1rem 0;
+    text-align: left;
+    display: flex;
+    gap: 24px;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    color: inherit;
+    @include h3;
+  }
+
+  .dropdownIcon {
+    transition: transform 0.2s ease;
+    @include h3;
+    margin: 0;
+    color: var(--color-green-blue);
+    padding: 6px;
+    border-radius: 10px;
+
+    svg {
+      display: block;
+    }
+  }
+
+  .dropdownPanel {
+    margin-top: 24px;
+  }
+}

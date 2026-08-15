@@ -54,6 +54,252 @@ $breakpoint-xxl-width: 1920px;
   letter-spacing: 0;
 }
 
+// button-label-basic-sans has no separate "bold" variant in the source
+// (src/scss/type.scss: button-label-bold-basic-sans just re-includes it).
+@mixin button-label-bold-basic-sans {
+  @include button-label-basic-sans;
+}
+
+@mixin label {
+  @include button-label-basic-sans;
+}
+
+// Typography mixins below, extracted from AdaBiblePayload: src/scss/type.scss.
+// $fontHeading/$fontBody there resolve to the same stacks as --font-heading/
+// --font-body above, so those CSS vars are used directly instead of re-declaring
+// the Sass variables.
+
+@mixin h1-emphasis {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-style: italic;
+  font-size: clamp(42px, 5vw + 16px, 84px);
+  line-height: clamp(48px, 5vw + 20px, 88px);
+  letter-spacing: 0;
+}
+
+@mixin h2-emphasis {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-style: italic;
+  font-size: clamp(42px, 3.5vw + 26px, 58px);
+  line-height: clamp(48px, 2.5vw + 34px, 60px);
+  letter-spacing: 0;
+}
+
+@mixin h1 {
+  font-family: var(--font-montserrat);
+  font-weight: 600;
+  font-style: normal;
+  font-size: clamp(42px, 5vw + 16px, 84px);
+  line-height: clamp(48px, 5vw + 20px, 88px);
+  letter-spacing: 0;
+  margin: 0 0 clamp(24px, 1vw + 20px, 28px);
+
+  & > em {
+    @include h1-emphasis;
+  }
+}
+
+@mixin h2 {
+  font-family: var(--font-montserrat);
+  font-weight: 600;
+  font-style: normal;
+  font-size: clamp(42px, 3.5vw + 26px, 58px);
+  line-height: clamp(48px, 2.5vw + 34px, 60px);
+  letter-spacing: 0;
+  margin: 0 0 clamp(24px, 1vw + 20px, 28px);
+
+  & > em {
+    @include h2-emphasis;
+  }
+}
+
+@mixin h3 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(34px, 1.5vw + 25px, 38px);
+  line-height: clamp(40px, 2vw + 30px, 46px);
+  letter-spacing: 0;
+  margin: 0 0 clamp(24px, 1vw + 20px, 28px);
+}
+
+// Plain h4 (used by the global `h4 { }` tag rule below) — distinct from
+// h4-basic-sans (used by ImageSliderBlock's slide headline overlay labels),
+// which shares the same font values but intentionally has no margin/is
+// applied to a non-heading-flow element.
+@mixin h4 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(24px, 0.5vw + 19px, 28px);
+  line-height: clamp(28px, 1vw, 32px);
+  letter-spacing: 0;
+  margin: 0 0 clamp(24px, 1vw + 20px, 28px);
+}
+
+@mixin h4-basic-sans {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(24px, 1vw + 19px, 28px);
+  line-height: clamp(28px, 3.3vw + 12px, 51px);
+  letter-spacing: 0;
+}
+
+@mixin h5 {
+  font-family: var(--font-heading);
+  font-weight: 300;
+  font-size: clamp(16px, 1vw + 11px, 22px);
+  line-height: 1.6;
+  letter-spacing: 0;
+  margin: 0 0 clamp(24px, 1vw + 20px, 28px);
+  max-width: 612px;
+}
+
+// Plain body copy (used by the global `p { }` tag rule below) — smaller and
+// narrower than body-large, which several blocks opt into explicitly.
+@mixin body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-style: normal;
+  font-size: clamp(14px, 0.5vw + 11px, 16px);
+  line-height: clamp(20px, 1.5vw + 13px, 30px);
+  letter-spacing: 0;
+  margin: 0 0 clamp(24px, 1vw + 20px, 28px);
+  max-width: 58em;
+}
+
+@mixin body-large {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-style: normal;
+  font-size: clamp(16px, 0.7vw + 12px, 18px);
+  line-height: clamp(22px, 1vw + 17px, 30px);
+  letter-spacing: 0;
+  margin: 0 0 clamp(24px, 1vw + 20px, 28px);
+  max-width: 739px;
+
+  & > strong {
+    font-weight: 700;
+  }
+}
+
+// body-large-20 and large-body are both just aliases of body-large in the source.
+@mixin body-large-20 {
+  @include body-large;
+}
+
+// RichText gradient-highlight (light-background variant), from
+// src/scss/mixins.scss. The dark-background variant (gradient-highlight-dark)
+// already exists as hero-gradient-highlight-dark in medium-impact-hero.scss;
+// duplicated here under its own name so this file doesn't depend on that one.
+@mixin gradient-highlight {
+  background-image: linear-gradient(90deg, rgba(187, 209, 98, 0.7) 0%, rgba(29, 149, 175, 0.7) 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.55em;
+  background-position: 0 88%;
+  mix-blend-mode: hard-light;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding: 0 0.12em;
+}
+
+@mixin gradient-highlight-dark {
+  background-image: linear-gradient(90deg, #6c8722 0%, #145755 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.55em;
+  background-position: 0 88%;
+  mix-blend-mode: hard-light;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding: 0 0.12em;
+
+  @supports (-webkit-touch-callout: none) {
+    @media (hover: none) and (pointer: coarse) {
+      mix-blend-mode: normal;
+    }
+  }
+}
+
+@mixin list-reset {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+@mixin shadow {
+  box-shadow: 0 0 11px rgba(43, 41, 41, 0.15);
+}
+
+@mixin bubble {
+  background-color: var(--color-charcoal);
+  border-radius: 25px;
+  color: white;
+  padding: 10px 20px;
+  @include label;
+}
+
+@mixin button-adaptive-text {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  text-align: center;
+}
+
+// Hover border used by card/button components, from src/scss/mixins.scss.
+@mixin gradient-border-hover(
+  $base-padding: 1px,
+  $hover-padding: 3px,
+  $gradient: linear-gradient(to right, #bbd162, #2ba9a5)
+) {
+  position: relative;
+  cursor: pointer;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    border-radius: inherit;
+    padding: $base-padding;
+    background: var(--color-green-blue);
+
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+
+    pointer-events: none;
+    transition: padding 150ms ease;
+  }
+
+  &:hover::before {
+    padding: $hover-padding;
+    background: $gradient;
+  }
+}
+
+@mixin readability-gradient {
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    pointer-events: none;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
+  }
+}
+
 // Layout wrapper used by the source app's <Gutter> component (src/layout/Gutter),
 // reproduced here since the medium-impact hero relies on its "narrow" variant.
 @mixin layout-shell($with-outline: false, $mobile-padding-x: 20px) {
@@ -89,7 +335,7 @@ $breakpoint-xxl-width: 1920px;
 // @font-face rules since this project has no build step.
 @font-face {
   font-family: 'Montserrat';
-  src: url('../fonts/montserrat/Montserrat-VariableFont_wght.ttf') format('truetype-variations');
+  src: url('../Assets/fonts/montserrat/Montserrat-VariableFont_wght.ttf') format('truetype-variations');
   font-weight: 100 900;
   font-style: normal;
   font-display: optional;
@@ -97,7 +343,7 @@ $breakpoint-xxl-width: 1920px;
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('../fonts/montserrat/Montserrat-Italic-VariableFont_wght.ttf')
+  src: url('../Assets/fonts/montserrat/Montserrat-Italic-VariableFont_wght.ttf')
     format('truetype-variations');
   font-weight: 100 900;
   font-style: italic;
@@ -186,4 +432,393 @@ ol {
 a {
   color: inherit;
   text-decoration: inherit;
+}
+
+// Global heading/paragraph sizing, from AdaBiblePayload: src/scss/app.scss
+// ("Global Resets" section — `h1 { @include h1 }`, `h2 { @include h2 }`, …).
+// The source app applies these completely unscoped, app-wide; reproduced the
+// same way here rather than per-block, since that's what every block's own
+// CSS module actually relies on (none of them set their own font-size for
+// h1–h5/p — they only add color/max-width/margin overrides on top of this).
+// More specific rules elsewhere (the hero's own .heroBody .html h2, slide
+// headlines' h4-basic-sans, etc.) still win via specificity as usual.
+h1 {
+  @include h1;
+}
+
+h2 {
+  @include h2;
+}
+
+h3 {
+  @include h3;
+}
+
+h4 {
+  @include h4;
+}
+
+h5 {
+  @include h5;
+}
+
+p {
+  @include body;
+}
+
+// Also from src/scss/app.scss's Global Resets — every h1–h5 above is already
+// weight 600 (or 400 for the basic-sans h3/h4), so without this a <strong>
+// inside a heading falls back to the browser default "bolder" and renders
+// visibly heavier than its surrounding text. On the source site it doesn't:
+// bold/italic inside a heading is meant to read as the *gradient-highlight*
+// emphasis, not extra boldness, so this keeps <strong> at the same weight
+// as the heading text around it.
+b,
+strong {
+  font-weight: 600;
+}
+
+// ============================================================================
+// Shared block-layout scaffolding, extracted from AdaBiblePayload:
+// src/layout/Gutter, src/layout/Padding, src/components/ContentField,
+// src/components/GradientBg (+ StripePattern), src/components/ui/button.
+//
+// Every CMS content block on a page (as opposed to the header/footer/hero
+// chrome above) is wrapped the same way there:
+//   <Gutter type="narrow"><Padding padding={...}><Block /></Padding></Gutter>
+// so those two wrappers are shared globals here rather than repeated inside
+// every new-to-ada-bible block partial. Block-specific classes (.ctaBlock,
+// .cardBlock, .dropdownInfoBlock, etc.) live in their own files and nest
+// under these.
+// ============================================================================
+
+// Each CMS block section (src/blocks/RenderBlocks.tsx) carries its own
+// backgroundColor as an inline style rather than a class, since it's a
+// per-instance CMS field rather than a fixed design choice — reproduced the
+// same way in the markup below (style="background-color: ...").
+.block {
+  position: relative;
+}
+
+.gutter {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  position: relative;
+  isolation: isolate;
+
+  &.narrow {
+    @include layout-shell($with-outline: true);
+  }
+}
+
+.padding {
+  width: 100%;
+  position: relative;
+
+  // Only the paddingTop/paddingBottom combinations actually used on this
+  // page are reproduced (medium/small/none) — see src/layout/Padding for
+  // the full small/large/extraLarge scale.
+  &.padding-top-none {
+    padding-top: 0;
+  }
+
+  &.padding-bottom-none {
+    padding-bottom: 32px;
+  }
+
+  &.padding-top-small {
+    padding-top: 150px;
+
+    @include extra-large-break {
+      padding-top: 128px;
+    }
+    @include large-break {
+      padding-top: 64px;
+    }
+    @include mid-break {
+      padding-top: 48px;
+    }
+    @include small-break {
+      padding-top: 32px;
+    }
+  }
+
+  &.padding-bottom-small {
+    padding-bottom: 150px;
+
+    @include extra-large-break {
+      padding-bottom: 128px;
+    }
+    @include large-break {
+      padding-bottom: 64px;
+    }
+    @include mid-break {
+      padding-bottom: 48px;
+    }
+    @include small-break {
+      padding-bottom: 32px;
+    }
+  }
+
+  &.padding-top-medium {
+    padding-top: 182px;
+
+    @include extra-large-break {
+      padding-top: 156px;
+    }
+    @include large-break {
+      padding-top: 108px;
+    }
+    @include mid-break {
+      padding-top: 72px;
+    }
+    @include small-break {
+      padding-top: 48px;
+    }
+  }
+
+  &.padding-bottom-medium {
+    padding-bottom: 182px;
+
+    @include extra-large-break {
+      padding-bottom: 156px;
+    }
+    @include large-break {
+      padding-bottom: 108px;
+    }
+    @include mid-break {
+      padding-bottom: 72px;
+    }
+    @include small-break {
+      padding-bottom: 48px;
+    }
+  }
+}
+
+// ContentField (src/components/ContentField): the subheading + rich text +
+// link-list wrapper reused inside BasicContentBlock, CardBlock, DropdownInfoBlock,
+// and (via ImageContentBlock) the Map/Next-Steps blocks.
+.contentField {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+
+    li,
+    > a {
+      flex: 0 0 calc(50% - 16px);
+      min-width: 0;
+    }
+
+    @include mid-break {
+      li,
+      > a {
+        flex: 0 0 auto;
+        width: auto;
+        max-width: 100%;
+      }
+    }
+  }
+
+  &.black .html {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      color: white;
+    }
+    p,
+    li {
+      color: white;
+    }
+  }
+
+  &.white .html {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      color: var(--color-main);
+    }
+    p,
+    li {
+      color: var(--color-main);
+    }
+  }
+
+  .subheadingOne {
+    @include label;
+    color: var(--color-green-blue) !important;
+    text-decoration: unset;
+  }
+
+  &.stackedSubheading .subheadingOne {
+    position: static;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  &.imageContentVariant .subheadingOne {
+    @include button-label-bold-basic-sans;
+    color: #2ba9a5;
+  }
+
+  .dynamicLinkItem {
+    flex: 0 1 auto !important;
+    width: auto !important;
+    max-width: 100%;
+
+    .button,
+    a {
+      max-width: 100%;
+      @include button-adaptive-text;
+    }
+  }
+}
+
+// GradientBg / StripePattern (src/components/GradientBg): the diagonal
+// green-to-yellow stripe wash used as a decorative backdrop behind images
+// and card art across several blocks below.
+.gradientPattern {
+  position: absolute;
+  border-radius: var(--radius);
+  z-index: -1;
+
+  &.left {
+    top: -20px;
+    left: -20px;
+
+    @include small-break {
+      top: -16px;
+      left: -16px;
+    }
+    @include extra-small-break {
+      top: -12px;
+      left: -12px;
+    }
+  }
+
+  &.right {
+    top: -20px;
+    right: -20px;
+
+    @include small-break {
+      top: -16px;
+      right: -16px;
+    }
+    @include extra-small-break {
+      top: -12px;
+      right: -12px;
+    }
+  }
+}
+
+.stripePattern {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #2ba9a5, #bbd162);
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.85;
+    background-image: repeating-linear-gradient(
+      115deg,
+      rgba(255, 255, 255, 0.35) 0px,
+      rgba(255, 255, 255, 0.35) 1px,
+      transparent 1px,
+      transparent 5px
+    );
+    pointer-events: none;
+  }
+}
+
+.blackBg {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-main);
+}
+
+// CMSLink / ui/button (src/components/Link, src/components/ui/button.scss):
+// the pill CTA button used by nearly every block's link list.
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  position: relative;
+  width: fit-content;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  text-decoration: unset;
+  margin: 0;
+  @include label;
+
+  &--size-default {
+    padding: 10px 20px;
+  }
+
+  &--variant-dark {
+    color: white;
+    background-color: var(--color-charcoal);
+    border-radius: 3px;
+    max-height: 45.2px;
+    @include gradient-border-hover;
+
+    &:hover {
+      background-color: #26292a;
+    }
+  }
+
+  &--variant-light {
+    border-radius: 3px;
+    background-color: var(--color-white);
+    color: var(--color-charcoal);
+    @include gradient-border-hover;
+  }
+}
+
+.button.button--variant-dark,
+.button.button--variant-dark:hover,
+.button.button--variant-dark:focus-visible,
+.button.button--variant-dark:visited {
+  color: white !important;
+}
+
+.button.button--variant-light,
+.button.button--variant-light:hover,
+.button.button--variant-light:focus-visible,
+.button.button--variant-light:visited {
+  color: var(--color-charcoal) !important;
+}
+
+.button__content {
+  display: flex;
+  align-items: center;
+}
+
+// RichText gradient-highlight (src/components/RichText/index.module.scss):
+// the inline highlighter-swipe behind emphasized text. Global (not scoped to
+// one block) since it's reused inside CTA/Next-Steps/Image-Slider headings.
+.gradientHighlight {
+  @include gradient-highlight;
+  font: inherit;
+}
+
+.gradientHighlightDark {
+  @include gradient-highlight-dark;
+  font: inherit;
 }
