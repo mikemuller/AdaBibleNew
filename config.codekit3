@@ -25,14 +25,6 @@
       "oAP" : "\/.gitignore",
       "oF" : 0
     },
-    "\/.vscode\/sftp.json" : {
-      "ft" : 524288,
-      "oA" : 1,
-      "oAP" : "\/.vscode\/sftp-min.json",
-      "oF" : 0,
-      "oO" : 1,
-      "oS" : 1
-    },
     "\/Assets\/fonts\/montserrat\/Montserrat-Italic-VariableFont_wght.ttf" : {
       "cB" : 0,
       "ft" : 8192,
@@ -210,7 +202,7 @@
     },
     "\/Assets\/images\/new-to-ada-bible-experience-event.jpg" : {
       "ft" : 16384,
-      "iS" : 143360,
+      "iS" : 570886,
       "jF" : 0,
       "oA" : 0,
       "oAP" : "\/Assets\/images\/new-to-ada-bible-experience-event.jpg",
@@ -249,7 +241,7 @@
     },
     "\/Assets\/images\/new-to-ada-bible-experience-ministries.jpg" : {
       "ft" : 16384,
-      "iS" : 221184,
+      "iS" : 235962,
       "jF" : 0,
       "oA" : 0,
       "oAP" : "\/Assets\/images\/new-to-ada-bible-experience-ministries.jpg",
@@ -847,6 +839,17 @@
       "mi" : 1,
       "oA" : 0,
       "oAP" : "\/Scripts\/megamenu-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
+    },
+    "\/Scripts\/new-to-ada-bible-min.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/Scripts\/new-to-ada-bible-min-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
