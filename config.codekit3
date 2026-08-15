@@ -17,13 +17,13 @@
       "oO" : 1,
       "oS" : 1
     },
-    "\/.vscode\/sftp.json" : {
-      "ft" : 524288,
-      "oA" : 1,
-      "oAP" : "\/.vscode\/sftp-min.json",
-      "oF" : 0,
-      "oO" : 1,
-      "oS" : 1
+    "\/.gitignore" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/.gitignore",
+      "oF" : 0
     },
     "\/Assets\/images\/AdaBible-Reverse2-Horizontal.svg" : {
       "ft" : 2097152,
