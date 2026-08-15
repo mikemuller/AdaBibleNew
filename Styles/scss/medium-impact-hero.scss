@@ -1,0 +1,386 @@
+// Medium Impact Hero styles, extracted from AdaBiblePayload:
+// src/heroes/MediumImpact/index.tsx + index.module.scss, as seen live at
+// adabible.org/get-involved (section id="hero--mediumImpact").
+//
+// This instance: dark theme (backgroundColor: 'black'), with media,
+// matchOverlapToBackground: false (confirmed from the live site's own
+// class list — the strip below the hero renders --color-off-white, which
+// is the "false" branch of that field for a dark hero).
+//
+// Everything is nested under .heroShell to keep these fairly generic class
+// names (.content, .image, .media, etc.) from leaking into header/footer/
+// megamenu the way the unscoped .socials rule once did in megamenu.scss.
+//
+// The source component also runs a `syncFirstBlockOffset` effect, but per
+// its own logic it always resolves to setting `--medium-impact-first-block-
+// offset` to either `0px` or removing it — i.e. it's a no-op in the current
+// build, so it isn't reproduced here.
+
+@use './shared' as *;
+
+@mixin hero-black {
+  color: black;
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  li,
+  span,
+  a {
+    color: inherit;
+  }
+}
+
+@mixin hero-white {
+  color: white;
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  li,
+  span,
+  a {
+    color: inherit;
+  }
+}
+
+@mixin hero-h2 {
+  font-family: var(--font-montserrat);
+  font-weight: 600;
+  font-style: normal;
+  font-size: clamp(42px, 3.5vw + 26px, 58px);
+  line-height: clamp(48px, 2.5vw + 34px, 60px);
+  letter-spacing: 0;
+  margin: 0 0 clamp(24px, 1vw + 20px, 28px);
+
+  em {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-style: italic;
+    font-size: clamp(42px, 3.5vw + 26px, 58px);
+    line-height: clamp(48px, 2.5vw + 34px, 60px);
+    letter-spacing: 0;
+  }
+}
+
+// The source's `.heroBody .html :is(p, li)` rule (body-large-20, clamp
+// 16-18px) targets a CSS-module class that never actually attaches to the
+// real DOM there — the "html" wrapper div in production belongs to a
+// different component's module (ContentField's own `.html`, not
+// MediumImpact's), so that rule is dead code. What actually renders is just
+// the page's plain global `p { @include body; }` — confirmed live via
+// getComputedStyle on adabible.org/get-involved (16px at 1600px width,
+// max-width 928px = 58em). Matching that observed reality here, not the
+// source's unreachable intent.
+@mixin hero-body-text {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-style: normal;
+  font-size: clamp(14px, 0.5vw + 11px, 16px);
+  line-height: clamp(20px, 1.5vw + 13px, 30px);
+  letter-spacing: 0;
+  max-width: 58em;
+  margin: 0 0 clamp(24px, 1vw + 20px, 28px);
+}
+
+// RichText gradient-highlight, from src/scss/mixins.scss
+@mixin hero-gradient-highlight-dark {
+  background-image: linear-gradient(90deg, #6c8722 0%, #145755 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.55em;
+  background-position: 0 88%;
+  mix-blend-mode: hard-light;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding: 0 0.12em;
+
+  @supports (-webkit-touch-callout: none) {
+    @media (hover: none) and (pointer: coarse) {
+      mix-blend-mode: normal;
+    }
+  }
+}
+
+.heroShell {
+  --medium-hero-overlap: 0px;
+  --medium-hero-overlap-fill: var(--color-off-white);
+
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  overflow: visible;
+  z-index: 10;
+  padding-bottom: 56px;
+
+  @include large-break {
+    padding-bottom: 36px;
+  }
+
+  @include mid-break {
+    padding-top: 52px;
+  }
+
+  &.heroShellWithMedia {
+    --medium-hero-overlap: 53px;
+
+    @include mid-break {
+      --medium-hero-overlap: calc((100vw - 20px) * 0.2504672897);
+    }
+  }
+
+  &.heroShellDark {
+    --medium-hero-overlap-fill: var(--color-off-white);
+  }
+
+  &.dark {
+    @include hero-white;
+  }
+
+  &.light {
+    @include hero-black;
+  }
+
+  .heroStrip {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 113px;
+
+    @include mid-break {
+      height: calc(56px + 33vw);
+    }
+  }
+
+  .backgroundPattern {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+
+    @include mid-break {
+      bottom: calc(56px + 33vw);
+    }
+
+    img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+
+      @include mid-break {
+        display: none;
+      }
+    }
+  }
+
+  .heroContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    isolation: isolate;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 2;
+    overflow: visible !important;
+
+    @include layout-shell($with-outline: true);
+
+    @include mid-break {
+      width: 100% !important;
+      max-width: none !important;
+      padding-left: 20px !important;
+      padding-right: 20px !important;
+      margin: 0 auto !important;
+    }
+  }
+
+  .mediumImpactHero {
+    display: flex;
+    position: relative;
+    overflow: visible;
+    justify-content: space-between;
+    padding: var(--header-stack-height, var(--header-height)) 0 0 0;
+    width: 100%;
+    gap: 208px;
+
+    @include extra-large-break {
+      gap: 108px;
+    }
+
+    @include large-break {
+      gap: 64px;
+    }
+
+    @include mid-break {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 48px;
+      padding-top: 48px;
+    }
+
+    @include small-break {
+      padding-top: 0;
+      gap: 32px;
+    }
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    padding: 53px 0 100px 0;
+    width: 43%;
+
+    @include mid-break {
+      width: 100% !important;
+      padding: 0;
+    }
+  }
+
+  .breadcrumbs {
+    margin-bottom: var(--small-gap);
+  }
+
+  .crumb a {
+    @include button-label-basic-sans;
+    font-weight: 700;
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    margin: 0;
+    line-height: 1;
+  }
+
+  .heroBody {
+    .html {
+      h2 {
+        @include hero-h2;
+      }
+
+      :is(p, li) {
+        @include hero-body-text;
+        color: inherit;
+      }
+
+      p + p {
+        margin-top: 1em;
+      }
+    }
+  }
+
+  .gradientHighlightDark {
+    @include hero-gradient-highlight-dark;
+  }
+
+  .imageWrap {
+    position: relative;
+    width: 57%;
+    aspect-ratio: 1.59;
+    margin-top: 53px;
+    margin-right: calc(var(--narrow-gutter-padding) * -1);
+    border-radius: var(--radius);
+
+    @include extra-large-break {
+      width: 60%;
+    }
+
+    @include large-break {
+      width: 65%;
+    }
+
+    @include mid-break {
+      width: 100%;
+      margin-right: -24px;
+      margin-top: 0;
+    }
+  }
+
+  .imageGradient {
+    position: absolute;
+    border-radius: var(--radius);
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    opacity: 70%;
+    top: calc(-1 * 53px);
+    right: calc(-2 * 53px);
+
+    @include mid-break {
+      top: -20px;
+      right: 0;
+    }
+
+    @include small-break {
+      top: -16px;
+      right: 0;
+    }
+
+    @include extra-small-break {
+      top: -12px;
+      right: 0;
+    }
+  }
+
+  .blackBg {
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-main);
+  }
+
+  .stripePattern {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #2ba9a5, #bbd162);
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.85;
+      background-image: repeating-linear-gradient(
+        115deg,
+        rgba(255, 255, 255, 0.35) 0px,
+        rgba(255, 255, 255, 0.35) 1px,
+        transparent 1px,
+        transparent 5px
+      );
+      pointer-events: none;
+    }
+  }
+
+  .image {
+    position: relative;
+    height: 100%;
+    min-height: 0;
+    max-height: none;
+    width: 100%;
+    z-index: 3;
+    overflow: hidden;
+    border-radius: var(--radius);
+
+    @include xx-large-break {
+      border-radius: 10px 0 0 10px;
+    }
+
+    .media {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}

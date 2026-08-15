@@ -1,0 +1,603 @@
+// Mega menu styles, extracted from AdaBiblePayload:
+// src/components/MegaMenu/index.module.scss + index.tsx
+//
+// The live site's root class for this component is a CSS-Modules hash,
+// `MegaMenu_megaMenu__QzrhR`. That literal class is kept on the root
+// element in index.html for traceability back to the source; this file
+// styles the same element via the plain `.megaMenu` class, consistent
+// with the naming used in header.scss/footer.scss.
+//
+// Everything below is nested under `.megaMenu` — this component's plain
+// class names (.socials, .parentLink, .subNavLink, etc.) would otherwise
+// collide with unrelated classes in header.scss/footer.scss once all
+// three compiled stylesheets share one global page (CSS Modules avoids
+// this in the source app by hashing every class; nesting recreates that
+// same isolation here).
+//
+// Show/hide, desktop hover-to-reveal-submenu, and mobile accordion
+// behavior are implemented in js/megamenu.js — this file only handles
+// the visual open/closed and active/inactive states via classes that
+// script toggles (.open, .parentLinkInactive, .subNavPanelActive, etc).
+
+@use './shared' as *;
+
+@mixin mega-h1 {
+  font-family: var(--font-montserrat), var(--font-heading);
+  font-weight: 600;
+  font-style: normal;
+  font-size: clamp(46px, 3.6vw, 58px);
+  line-height: clamp(63px, 5.1vw, 81px);
+  letter-spacing: 0;
+  margin: 0;
+}
+
+.megaMenu {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  overflow-x: hidden;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 220ms ease,
+    visibility 0s linear 220ms;
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition:
+      opacity 220ms ease,
+      visibility 0s linear 0s;
+  }
+
+  &:not(.open),
+  &:not(.open) * {
+    pointer-events: none !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+
+  @include mid-break {
+    position: fixed;
+    height: 100dvh;
+  }
+
+  .shell {
+    background: linear-gradient(90deg, #bbd162 0%, #6cb388 50%, #1d95af 100%);
+    position: relative;
+    overflow: hidden;
+    max-height: calc(100vh - 81px);
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: var(--menu-outline-padding);
+
+    @include mid-break {
+      height: 100%;
+      max-height: none;
+      overflow: hidden;
+      padding: 5px;
+    }
+  }
+
+  .menuWrap {
+    background-color: var(--color-main);
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+
+    @include mid-break {
+      background-color: var(--color-black);
+      height: 100%;
+    }
+  }
+
+  .menuContent {
+    margin-top: var(--header-height);
+    width: 100%;
+    height: auto;
+    max-height: calc(100vh - 81px - (var(--menu-outline-padding) * 2));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border-top: 1px solid white;
+
+    @include mid-break {
+      margin-top: var(--header-height);
+      max-height: none;
+      overflow-y: auto;
+      overflow-x: hidden;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+      border-top: none;
+      display: flex;
+      flex-direction: column;
+      height: calc(100% - var(--header-height));
+      min-height: 0;
+    }
+  }
+
+  .parentItem {
+    margin: 0;
+    display: inline-flex;
+    width: fit-content;
+  }
+
+  .parentLink {
+    display: inline-flex;
+    align-items: center;
+    color: #fff;
+    opacity: 1;
+    text-decoration: none;
+    transition:
+      opacity 220ms ease,
+      color 220ms ease;
+  }
+
+  .parentLinkInactive {
+    opacity: 0.3;
+  }
+
+  .parentArrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: clamp(10px, 1.1vw, 18px);
+    width: clamp(14px, 1.2vw, 19px);
+    min-width: clamp(14px, 1.2vw, 19px);
+    height: clamp(22px, 1.9vw, 30px);
+    flex-shrink: 0;
+  }
+
+  // ================= DESKTOP =================
+
+  .largeWrap {
+    display: flex;
+    height: auto;
+    width: 100%;
+    max-width: calc(var(--content-max-width) + (var(--header-nav-padding-x) * 2));
+    margin: 0 auto;
+    padding: 0 var(--header-nav-padding-x);
+
+    @include mid-break {
+      display: none;
+    }
+
+    .parentLinks {
+      padding: 90px 128px 90px 0;
+      width: 58.5%;
+      position: relative;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 40px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: calc(var(--menu-outline-padding) * 2);
+        width: 1px;
+        background-color: #fff;
+        pointer-events: none;
+      }
+
+      .parentLink {
+        @include mega-h1;
+        white-space: nowrap;
+      }
+
+      @include extra-large-break {
+        .parentLink {
+          font-family: var(--font-heading);
+          font-size: clamp(30px, 2.2vw, 36px);
+          font-style: italic;
+          font-weight: 400;
+          line-height: clamp(40px, 2.9vw, 48px);
+        }
+      }
+    }
+  }
+
+  .rightSide {
+    position: relative;
+    padding: 90px 0 90px 48px;
+    width: 41.5%;
+    color: white;
+    overflow: hidden;
+  }
+
+  .defaultPanel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--gap);
+    height: 100%;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition:
+      opacity 220ms ease,
+      visibility 0s linear 0s;
+  }
+
+  .defaultPanelHidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      opacity 220ms ease,
+      visibility 0s linear 220ms;
+  }
+
+  .contactWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    align-items: flex-start;
+  }
+
+  .contactInfoRow {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    column-gap: 72px;
+    width: max-content;
+  }
+
+  .contactInfoText {
+    color: var(--color-light-gray);
+    text-decoration: none;
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-style: italic;
+  }
+
+  .subNavPanelWrap {
+    position: absolute;
+    inset: 0;
+    padding: 90px 0 90px 154px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(8px);
+    transition:
+      opacity 220ms ease,
+      transform 220ms ease,
+      visibility 0s linear 220ms;
+  }
+
+  .subNavPanelWrapVisible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+    transition:
+      opacity 220ms ease,
+      transform 220ms ease,
+      visibility 0s linear 0s;
+  }
+
+  .subNavPanel {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+
+    &.subNavPanelActive {
+      display: flex;
+    }
+  }
+
+  .subNavLink {
+    color: #fffdf1;
+    text-decoration: underline;
+    font-family: var(--font-heading);
+    font-size: 28px;
+    font-style: italic;
+    line-height: 58px;
+  }
+
+  .bottomLinks {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    column-gap: 72px;
+    align-items: start;
+    width: max-content;
+  }
+
+  .socials {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  .locations {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  .locationLink {
+    color: var(--color-light-gray);
+    text-decoration: underline;
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-style: italic;
+    line-height: 36.5px;
+  }
+
+  // ================= MOBILE =================
+
+  .smallWrap {
+    overflow-y: auto;
+    display: none;
+    height: auto;
+    width: 100%;
+    color: white;
+
+    @include mid-break {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-height: 0;
+      overflow-y: visible;
+    }
+
+    .mobileLinksBlock {
+      background: #262629;
+    }
+
+    .parentLinks {
+      padding: 45px 23px;
+      background: #262629;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .primaryLink,
+    .parentLabel {
+      color: #f5f3e8;
+      font-family: var(--font-heading);
+      font-size: 24px;
+      font-style: italic;
+      line-height: 28px;
+      text-decoration: underline;
+    }
+
+    .parentArrow {
+      margin-left: 8px;
+      width: 9px;
+      min-width: 9px;
+      height: 14px;
+    }
+
+    .bottomLinks {
+      padding: 0 23px 42px;
+      border-top: 1px solid #262629;
+      background: #1e1e1e;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      flex: 0 0 auto;
+      // `align-items: stretch` doesn't reliably force a definite width here
+      // (the nested grid's nowrap content otherwise pulls this wider than
+      // the flex container, blowing it out past the viewport at narrow
+      // widths) — an explicit width plus min-width: 0 forces it.
+      width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+    }
+
+    .locations {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      column-gap: 20px;
+      row-gap: 8px;
+      margin-bottom: 44px;
+      min-width: 0;
+    }
+
+    .socials {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 14px;
+    }
+  }
+
+  .mobileParentGroupButton {
+    border: 0;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    color: #f5f3e8;
+    transition: color 220ms ease;
+
+    &.mobileParentGroupButtonActive {
+      color: #fffdf199;
+    }
+  }
+
+  .mobileParentItem {
+    max-height: 72px;
+    overflow: hidden;
+    margin-bottom: var(--gap);
+    opacity: 1;
+    visibility: visible;
+    transition:
+      opacity 220ms ease,
+      max-height 220ms ease,
+      margin-bottom 220ms ease,
+      visibility 0s linear 0s;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &.mobileParentItemInactive {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      max-height: 0;
+      margin-bottom: 0;
+      transition:
+        opacity 220ms ease,
+        max-height 220ms ease,
+        margin-bottom 220ms ease,
+        visibility 0s linear 220ms;
+    }
+  }
+
+  .mobileParentLeftArrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 0;
+    min-width: 0;
+    height: 14px;
+    margin-right: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition:
+      opacity 220ms ease,
+      width 220ms ease,
+      min-width 220ms ease,
+      margin-right 220ms ease;
+
+    &.mobileParentLeftArrowVisible {
+      width: 9px;
+      min-width: 9px;
+      opacity: 0.6;
+      margin-right: 8px;
+    }
+  }
+
+  .mobileSubNavPanel {
+    background: #262629;
+    padding: 0 23px;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    pointer-events: none;
+    transform: translateY(8px);
+    transition:
+      opacity 220ms ease,
+      max-height 220ms ease,
+      transform 220ms ease,
+      padding 220ms ease;
+
+    &.mobileSubNavPanelVisible {
+      opacity: 1;
+      max-height: 500px;
+      pointer-events: auto;
+      transform: translateY(0);
+      padding: 0 23px 45px;
+    }
+  }
+
+  .mobileSubNavGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 20px;
+    row-gap: 10px;
+    width: 100%;
+  }
+
+  .mobileSubNavLink {
+    color: #f5f3e8;
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-style: italic;
+    line-height: 28px;
+    text-decoration: underline;
+  }
+
+  .inquiries {
+    padding: 60px 23px;
+    background: #1e1e1e;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .primaryLink {
+      color: #f5f3e8;
+      font-family: var(--font-heading);
+      font-size: 24px;
+      font-style: italic;
+      line-height: 28px;
+      text-decoration: underline;
+    }
+  }
+
+  .contactLine {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+  }
+
+  .contactInfoLink,
+  .contactPipe {
+    color: #fffdf199;
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-style: italic;
+    line-height: 28px;
+    text-decoration: underline;
+  }
+
+  .contactPipe {
+    text-decoration: none;
+  }
+
+  .giveLink {
+    @include mid-break {
+      margin-bottom: 24px;
+    }
+  }
+
+  .mobileLocationLink {
+    color: #fffdf199;
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-style: italic;
+    line-height: 28px;
+    text-decoration: underline;
+    white-space: nowrap;
+  }
+
+  .socialIconLink {
+    width: 18px;
+    height: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fffdf199;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .socialIconSvg {
+    width: 18px;
+    height: 18px;
+    display: block;
+    flex-shrink: 0;
+  }
+}

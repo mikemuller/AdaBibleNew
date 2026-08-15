@@ -1,0 +1,240 @@
+// Header styles, extracted and simplified from AdaBiblePayload:
+// src/layout/Header/index.module.scss + src/layout/Header/Component.client.tsx
+//
+// The header floats transparent over the page at the top (matching the
+// source: .headerChrome's background is transparent by default, and only
+// the .desktopHeaderSticky state — pinned while scrolling back up below the
+// fold — makes it solid). Sticky/hide-on-scroll (js/header-scroll.js,
+// including the `isScrolled` flag) and the mega menu (js/megamenu.js) are
+// reproduced; search modal, alert bar, and admin-bar offsets were left out
+// per the "static visual only" scope.
+
+@use './shared' as *;
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--header-z);
+  transition:
+    top 240ms ease,
+    background-color 240ms ease;
+
+  &.desktopHeaderSticky,
+  &.desktopHeaderHidden {
+    position: fixed;
+  }
+
+  &.desktopHeaderSticky {
+    top: 0;
+  }
+
+  &.desktopHeaderHidden {
+    top: calc(-1 * var(--header-stack-height, var(--header-height)));
+  }
+
+  @include mid-break {
+    position: sticky;
+    top: 0;
+
+    &.dark {
+      background-color: var(--color-main);
+    }
+
+    &.light {
+      background-color: var(--color-white);
+    }
+
+    &.transparent {
+      background-color: transparent;
+    }
+
+    // `isScrolled` (js/header-scroll.js, scrollY > 3px) forces a solid bar
+    // once you've moved off the very top of the page, even if a future
+    // transparent/hero variant would otherwise keep it see-through here.
+    &.dark.isScrolled,
+    &.transparent.isScrolled {
+      background-color: var(--color-main) !important;
+    }
+
+    &.light.isScrolled {
+      background-color: var(--color-white) !important;
+    }
+  }
+
+  &.mobileHidden {
+    @include mid-break {
+      top: calc(-1 * var(--mobile-header-height, 0px));
+    }
+  }
+}
+
+// Desktop: transparent by default (floats over whatever is behind it at the
+// top of the page); only the pinned-while-scrolling-up state gets a solid
+// background, since at that point it's overlapping arbitrary page content.
+.header.desktopHeaderSticky.dark .headerChrome,
+.header.desktopHeaderSticky.transparent .headerChrome {
+  background-color: var(--color-main);
+}
+
+.header.desktopHeaderSticky.light .headerChrome {
+  background-color: var(--color-white);
+}
+
+.header.dark .nav {
+  color: white;
+}
+
+.header.light .nav * {
+  color: black;
+}
+
+.headerChrome {
+  position: relative;
+  background: transparent;
+  transition: background-color 240ms ease;
+}
+
+.logo {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.headerGutter {
+  // Must out-rank .megaMenu's z-index (999) so the nav bar stays visible
+  // above the mega menu overlay, which is a sibling deeper in the header.
+  position: relative;
+  z-index: 1000;
+  width: calc(100% - (var(--menu-outline-padding) * 2));
+  max-width: calc(var(--content-max-width) + (var(--header-nav-padding-x) * 2));
+  margin: 0 auto;
+  padding-left: var(--header-nav-padding-x);
+  padding-right: var(--header-nav-padding-x);
+  box-sizing: border-box;
+
+  @include mid-break {
+    width: 100%;
+    max-width: none;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.navWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 83px;
+
+  @include mid-break {
+    height: 73px;
+  }
+}
+
+.headerControls {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.desktopNavLinks {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+
+  @include mid-break {
+    display: none;
+  }
+}
+
+.desktopNavLink {
+  @include button-label-basic-sans;
+  margin: 0;
+  color: var(--color-white);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: 150ms linear opacity;
+
+  &:hover {
+    opacity: 0.75;
+  }
+}
+
+.iconButtons {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+
+  @include mid-break {
+    gap: 10px;
+  }
+}
+
+.iconButtons button {
+  display: block;
+  background: none;
+  border: none;
+  padding: 0;
+  line-height: 0;
+  cursor: pointer;
+}
+
+.menuIcon,
+.searchIcon {
+  width: 38px;
+  height: 38px;
+
+  @include mid-break {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+// Icon hover glow, re-created from
+// src/components/Icons/Menu/index.module.scss + Icons/Search/index.module.scss
+// (a gradient-filled circle behind the icon, hidden until hover).
+.searchIcon .bg {
+  fill: url(#grad-search);
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+
+.searchIcon:hover .bg {
+  opacity: 0.8;
+}
+
+.menuIcon .bg {
+  fill: url(#grad-menu);
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+
+.menuIcon:hover .bg {
+  opacity: 0.8;
+}
+
+// Menu button X-animation, re-created from
+// src/components/Icons/Menu/index.tsx (the `open` prop's inline transforms).
+.menuIconLineTop,
+.menuIconLineBottom {
+  transform-origin: 50% 50%;
+  transform-box: fill-box;
+  transition: transform 300ms ease;
+}
+
+#menuButton.menuOpen .menuIconLineTop {
+  transform: translateY(4.5px) rotate(45deg);
+}
+
+#menuButton.menuOpen .menuIconLineBottom {
+  transform: translateY(-4.5px) rotate(-45deg);
+}

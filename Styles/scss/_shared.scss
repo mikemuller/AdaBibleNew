@@ -1,0 +1,189 @@
+// Shared design tokens for header.scss and footer.scss.
+// Extracted from AdaBiblePayload: src/scss/{vars,queries,mixins,fonts}.scss
+
+$breakpoint-xs-width: 440px;
+$breakpoint-s-width: 768px;
+$breakpoint-m-width: 1024px;
+$breakpoint-l-width: 1279px;
+$breakpoint-xl-width: 1679px;
+
+@mixin extra-small-break {
+  @media (max-width: $breakpoint-xs-width) {
+    @content;
+  }
+}
+
+@mixin small-break {
+  @media (max-width: $breakpoint-s-width) {
+    @content;
+  }
+}
+
+@mixin mid-break {
+  @media (max-width: $breakpoint-m-width) {
+    @content;
+  }
+}
+
+@mixin large-break {
+  @media (max-width: $breakpoint-l-width) {
+    @content;
+  }
+}
+
+@mixin extra-large-break {
+  @media (max-width: $breakpoint-xl-width) {
+    @content;
+  }
+}
+
+$breakpoint-xxl-width: 1920px;
+
+@mixin xx-large-break {
+  @media (max-width: $breakpoint-xxl-width) {
+    @content;
+  }
+}
+
+@mixin button-label-basic-sans {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(14px, 0.5vw + 11px, 16px);
+  line-height: clamp(20px, 1.5vw + 13px, 30px);
+  letter-spacing: 0;
+}
+
+// Layout wrapper used by the source app's <Gutter> component (src/layout/Gutter),
+// reproduced here since the medium-impact hero relies on its "narrow" variant.
+@mixin layout-shell($with-outline: false, $mobile-padding-x: 20px) {
+  $outline-padding: if($with-outline, var(--menu-outline-padding), 0px);
+
+  width: calc(100% - (#{$outline-padding} * 2));
+  max-width: calc(var(--content-max-width) + (var(--header-nav-padding-x) * 2));
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--header-nav-padding-x);
+  padding-right: var(--header-nav-padding-x);
+  box-sizing: border-box;
+
+  @include mid-break {
+    width: 100%;
+    max-width: none;
+    padding-left: $mobile-padding-x;
+    padding-right: $mobile-padding-x;
+  }
+}
+
+@font-face {
+  font-family: 'Basic Sans Fallback';
+  src: local('Arial');
+  ascent-override: 92%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+  size-adjust: 105%;
+}
+
+// Montserrat (variable font), copied from AdaBiblePayload: src/fonts/montserrat/
+// Original is loaded there via next/font/local; reproduced here as plain
+// @font-face rules since this project has no build step.
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/montserrat/Montserrat-VariableFont_wght.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: optional;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/montserrat/Montserrat-Italic-VariableFont_wght.ttf')
+    format('truetype-variations');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: optional;
+}
+
+:root {
+  // "basic-sans" is a licensed Adobe Fonts (Typekit) family, not a local file
+  // — see index.html for the Typekit kit link this depends on.
+  --font-heading: 'basic-sans', 'Basic Sans Fallback', sans-serif;
+  --font-body: 'basic-sans', 'Basic Sans Fallback', sans-serif;
+  --font-montserrat:
+    'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    sans-serif;
+
+  --color-black: #1e1e1e;
+  --color-main: #262629;
+  --color-charcoal: #313133;
+  --color-gray: #545454;
+  --color-light-gray: #a59f9f;
+  --color-white: #fffdf1;
+  --color-off-white: #f5f3e8;
+  --color-blue: #194a7b;
+  --color-green-blue: #2ba9a5;
+  --color-light-green: #d5ece1;
+  --color-yellow: #bbd162;
+
+  --max-width: 1920px;
+  --content-max-width: 1440px;
+  --header-nav-padding-x: clamp(24px, 4vw, 62px);
+  --menu-outline-padding: 17px;
+  --gap: 48px;
+  --small-gap: calc(var(--gap) * (2 / 3));
+  --gutter-padding: 60px;
+  --narrow-gutter-padding: calc(var(--gutter-padding) * 4);
+  --radius: 10px;
+  --header-z: 1000;
+  --header-height: 95px;
+}
+
+@include extra-large-break {
+  :root {
+    --narrow-gutter-padding: calc(var(--gutter-padding) * 2);
+  }
+}
+
+@include large-break {
+  :root {
+    --gutter-padding: 48px;
+    --narrow-gutter-padding: calc(var(--gutter-padding) * 1.5);
+  }
+}
+
+@include mid-break {
+  :root {
+    --header-height: 138px;
+    --narrow-gutter-padding: calc(var(--gutter-padding) * 2);
+    --gutter-padding: 36px;
+  }
+}
+
+@include small-break {
+  :root {
+    --narrow-gutter-padding: calc(var(--gutter-padding) * 1.25);
+    --gutter-padding: 24px;
+  }
+}
+
+@include extra-small-break {
+  :root {
+    --narrow-gutter-padding: 20px;
+    --gutter-padding: 20px;
+  }
+}
+
+// The live app gets this from Tailwind's preflight base styles. Reproduced
+// here so links/lists inside the header and footer look the same without
+// pulling in all of Tailwind.
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}

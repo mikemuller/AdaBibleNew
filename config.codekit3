@@ -17,6 +17,30 @@
       "oO" : 1,
       "oS" : 1
     },
+    "\/Assets\/fonts\/montserrat\/Montserrat-Italic-VariableFont_wght.ttf" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/Assets\/fonts\/montserrat\/Montserrat-Italic-VariableFont_wght.ttf",
+      "oF" : 0
+    },
+    "\/Assets\/fonts\/montserrat\/Montserrat-VariableFont_wght.ttf" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/Assets\/fonts\/montserrat\/Montserrat-VariableFont_wght.ttf",
+      "oF" : 0
+    },
+    "\/Assets\/fonts\/montserrat\/OFL.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/Assets\/fonts\/montserrat\/OFL.txt",
+      "oF" : 0
+    },
     "\/Assets\/images\/AdaBible-Reverse2-Horizontal.svg" : {
       "ft" : 2097152,
       "miP" : 0,
@@ -79,6 +103,19 @@
       "q" : 100,
       "rq" : 75
     },
+    "\/Assets\/images\/hero-get-involved.jpg" : {
+      "ft" : 16384,
+      "iS" : 442153,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/Assets\/images\/hero-get-involved.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
     "\/Assets\/images\/logo-2018-white.svg" : {
       "ft" : 2097152,
       "miP" : 0,
@@ -94,6 +131,16 @@
       "miP" : 0,
       "oA" : 2,
       "oAP" : "\/Assets\/images\/logo-2018.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
+      "prP" : 0
+    },
+    "\/Assets\/images\/medium-impact-hero-background.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/Assets\/images\/medium-impact-hero-background.svg",
       "oF" : 0,
       "opt" : 0,
       "plM" : 52780316221407,
@@ -495,6 +542,14 @@
       "oAP" : "\/Assets\/Lava\/ScheduledTransactionSummary.lava",
       "oF" : 0
     },
+    "\/index.html" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/index.html",
+      "oF" : 0
+    },
     "\/Layouts\/Blank.aspx" : {
       "cB" : 0,
       "ft" : 8192,
@@ -599,6 +654,28 @@
       "oA" : 1,
       "oAP" : "\/Scripts\/AdaBible-min.js",
       "oF" : 1,
+      "sC" : 3,
+      "tS" : 0
+    },
+    "\/Scripts\/header-scroll.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/Scripts\/header-scroll-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
+    },
+    "\/Scripts\/megamenu.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/Scripts\/megamenu-min.js",
+      "oF" : 0,
       "sC" : 3,
       "tS" : 0
     },
@@ -805,6 +882,84 @@
       "rwU" : 0,
       "sI" : 0,
       "sU" : 0
+    },
+    "\/Styles\/scss\/_shared.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/Styles\/scss\/_shared.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0
+    },
+    "\/Styles\/scss\/ada.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 0,
+      "oAP" : "\/Styles\/scss\/ada.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0
+    },
+    "\/Styles\/scss\/footer.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/Styles\/scss\/footer.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0
+    },
+    "\/Styles\/scss\/header.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/Styles\/scss\/header.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0
+    },
+    "\/Styles\/scss\/medium-impact-hero.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/Styles\/scss\/medium-impact-hero.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0
+    },
+    "\/Styles\/scss\/megamenu.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/Styles\/scss\/megamenu.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0
     },
     "\/Styles\/theme.css" : {
       "aP" : 1,
