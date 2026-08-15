@@ -9,6 +9,14 @@
   ],
   "creatorBuild" : "34921",
   "files" : {
+    "\/.claude\/settings.local.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/.claude\/settings.local-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
     "\/.vscode\/sftp.json" : {
       "ft" : 524288,
       "oA" : 1,
