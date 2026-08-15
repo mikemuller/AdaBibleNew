@@ -8,11 +8,22 @@
 
 @use './shared' as *;
 
+// Legacy theme.css still carries a bare `footer { padding: 130px 0; text-align:
+// center; font-size: 14px; }` element-selector rule (for the old Rock
+// `<footer><div class="containerx">...` zone wrapper). A class selector like
+// `.footer` always out-specifies a bare element selector, but only for the
+// properties it actually declares — anything left unset here still falls
+// through from that legacy rule. It was leaking a large extra top/bottom gap
+// and centering every column and link inside the new footer, so all four
+// properties are pinned back to sane values explicitly.
 .footer {
   position: relative;
   overflow: hidden;
   background: var(--color-main);
   color: var(--color-white);
+  padding: 0;
+  text-align: left;
+  font-size: 16px;
 }
 
 .footerInner {
@@ -68,10 +79,21 @@
       gap: 96px;
     }
 
+    // theme.css still carries a bare `.col { flex: 1 0 0; padding-left: 15px;
+    // padding-right: 15px; }` rule (an old Bootstrap-grid-style equal-width
+    // column utility). It was forcing all three nav columns to the same
+    // grown width regardless of content — wrapping labels like "Discipleship
+    // Journey" and "Become a Member" onto two lines — and indenting each
+    // column's content 15px further right than the row above it. Resetting
+    // `flex`/`padding` here (this selector's extra ancestor classes already
+    // out-specify the bare `.col`) lets each column size to its own content,
+    // matching adabible.org's layout.
     .col {
       display: flex;
       flex-direction: column;
+      flex: 0 1 auto;
       gap: 16px;
+      padding: 0;
 
       ul {
         display: flex;
@@ -182,10 +204,16 @@
       flex-direction: column;
       gap: var(--gap);
 
+      // Same legacy `.col` leak as the desktop version above — flex-direction
+      // is column here, so the leaked `flex: 1 0 0` mostly just wastes
+      // vertical growth, but the 15px left/right padding still indents this
+      // column's content past the row above it.
       .col {
         display: flex;
         flex-direction: column;
+        flex: 0 1 auto;
         gap: 12px;
+        padding: 0;
 
         ul {
           display: flex;

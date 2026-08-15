@@ -3,6 +3,14 @@
 // (the `useMegaMenu`/`activeMenu` state and the onMouseEnter/onMouseLeave
 // and mobile accordion click handlers), since that original is React state
 // driven and has no build step here.
+//
+// This is the only nav/mega-menu script the theme loads. The old
+// Scripts/AdaBible.js has been unlinked from Site.Master — it only ever
+// targeted the legacy `.navbar-adabible` header markup (which is now
+// commented out in Site.Master and never rendered), plus a dead
+// `.MenuIcon--link` click handler for a button that no longer exists.
+// None of it applied to the current `#menuButton`/`#megaMenu` markup, so
+// there was nothing live left to carry forward into this file.
 
 (function () {
   var menuButton = document.getElementById('menuButton');

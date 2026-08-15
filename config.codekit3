@@ -9,6 +9,14 @@
   ],
   "creatorBuild" : "34921",
   "files" : {
+    "\/.claude\/settings.local.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/.claude\/settings.local-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
     "\/.vscode\/sftp.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -853,6 +861,18 @@
       "sI" : 0,
       "sU" : 0
     },
+    "\/Styles\/ada.css" : {
+      "aP" : 1,
+      "bl" : 0,
+      "ci" : 0,
+      "co" : 0,
+      "ft" : 16,
+      "ma" : 0,
+      "oA" : 0,
+      "oAP" : "\/Styles\/ada-min.css",
+      "oF" : 0,
+      "pg" : 0
+    },
     "\/Styles\/bootstrap.css" : {
       "aP" : 1,
       "bl" : 0,
@@ -904,8 +924,8 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/Styles\/scss\/ada.css",
-      "oF" : 0,
+      "oAP" : "\/Styles\/ada.css",
+      "oF" : 2,
       "oS" : 0,
       "pg" : 0
     },

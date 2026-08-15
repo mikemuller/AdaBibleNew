@@ -2,10 +2,18 @@
 // src/components/MegaMenu/index.module.scss + index.tsx
 //
 // The live site's root class for this component is a CSS-Modules hash,
-// `MegaMenu_megaMenu__QzrhR`. That literal class is kept on the root
-// element in index.html for traceability back to the source; this file
-// styles the same element via the plain `.megaMenu` class, consistent
-// with the naming used in header.scss/footer.scss.
+// `MegaMenu_megaMenu__QzrhR`. That literal class is still kept on the root
+// element in the offline reference snapshots (index.html, Assets/Lava/
+// Ada-megamenu.lava) for traceability back to the source, but NOT on the
+// live element in Layouts/Site.Master: Styles/ada-styles/ada-megamenu.css
+// (still loaded transitively via theme.css → ada-foundation.css →
+// ada-megamenu.css) targets that exact class with a `!important` rule that
+// disables pointer-events whenever it lacks the legacy `.MegaMenu_open`
+// class — which is always, since this component's JS toggles plain `.open`
+// instead. Keeping the traceability class on the live element silently
+// killed every hover/click interaction inside the open mega menu, so it was
+// dropped there; this file styles the element via the plain `.megaMenu`
+// class, consistent with the naming used in header.scss/footer.scss.
 //
 // Everything below is nested under `.megaMenu` — this component's plain
 // class names (.socials, .parentLink, .subNavLink, etc.) would otherwise

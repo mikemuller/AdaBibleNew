@@ -96,7 +96,25 @@
   transition: background-color 240ms ease;
 }
 
-.logo {
+// `.logo` alone loses to the legacy `.header .logo` rule still in theme.css
+// (specificity 0,0,2,0 vs 0,0,1,0 here), which absolutely-positions the old
+// image-based logo and pulls it out of the flex layout, overlapping the new
+// header's nav links and icon buttons. Repeating the selector at matching
+// specificity — and later in the cascade, since ada.css loads after
+// theme.css — resets those legacy properties so the new inline-SVG logo
+// lays out in flow as intended.
+.logo,
+.header .logo {
+  position: static;
+  top: auto;
+  left: auto;
+  transform: none;
+  overflow: visible;
+  white-space: normal;
+  text-indent: 0;
+  background: none;
+  color: inherit;
+  width: auto;
   height: 100%;
   display: flex;
   align-items: center;
