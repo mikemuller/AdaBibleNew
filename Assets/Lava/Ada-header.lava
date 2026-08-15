@@ -1,50 +1,323 @@
-<header class="ada-header ada-header--dark">
-    <div class="ada-header__inner">
-        <a class="ada-header__brand" href="/">Brand</a>
-        <nav class="ada-header__nav">
-            <a class="ada-header__link" href="/about">About</a>
-            <a class="ada-header__link" href="/locations">Locations</a>
-        </nav>
-        <div class="ada-header__actions">
-            <a class="ada-header__link" href="https://ada-bible.vercel.app/">Main Site</a>
-            {% if CurrentPerson.FullName %}
-            <a class="ada-header__link" href="/MyAccount">{{ CurrentPerson.FullName }}</a>
-            {% else %}
-            <a class="ada-header__link" href="/">Please Log In</a>
-
-            {% endif %}
-            <div class="ada-header__icon--buttons">
-                <button class="Search_searchButton--link">
-                    <svg class="Search_searchIcon Header_searchIcon" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
-                                <stop offset="0%" stop-color="#2ba9a5"></stop>
-                                <stop offset="100%" stop-color="#bbd162"></stop>
-                            </linearGradient>
-                        </defs>
-                        <rect x="1" y="1" width="38" height="38" rx="19" class="Search_bg__h8Wus"></rect>
-                        <rect x="1" y="1" width="38" height="38" rx="19" stroke="white" stroke-width="1"></rect>
-                        <circle cx="19" cy="19" r="6" stroke="white" stroke-width="1"></circle>
-                        <path d="M24 24L28 28" stroke="white" stroke-width="1" stroke-linecap="round"></path>
+<!-- ============ HEADER ============ -->
+<!-- Extracted from src/layout/Header (Component.tsx / Component.client.tsx / Nav/index.tsx)
+            Dark theme, solid background (no hero section here to justify the
+            transparent-over-hero look the source app uses). Sticky/hide-on-scroll
+            (js/header-scroll.js) and the mega menu (js/megamenu.js) are wired up;
+            the search modal and alert bar are not implemented. -->
+<header class="header dark">
+    <div class="headerChrome">
+        <div class="headerGutter">
+            <div class="navWrap">
+                <a class="logo" href="/" aria-label="Ada Bible Church home">
+                    <svg width="172" height="31" viewBox="0 0 172 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50.6647 20.1015H43.9389L42.6864 23.1945H38.0918L45.1152 7.28638H49.5437L56.5879 23.1945H51.9033L50.6509 20.1015H50.6647ZM49.3431 16.7801L47.2949 11.6872L45.2467 16.7801H49.3361H49.3431Z" fill="white" />
+                        <path
+                            d="M58.9062 7.2793H66.4278C68.1716 7.2793 69.7147 7.60452 71.064 8.25496C72.4133 8.9054 73.4582 9.83263 74.1986 11.0297C74.939 12.2268 75.3126 13.6315 75.3126 15.2368C75.3126 16.8422 74.939 18.2469 74.1986 19.4439C73.4582 20.641 72.4133 21.5683 71.064 22.2187C69.7147 22.8692 68.1716 23.1944 66.4278 23.1944H58.9062V7.28622V7.2793ZM66.2479 19.5962C67.6111 19.5962 68.7044 19.2087 69.5348 18.4337C70.3582 17.6587 70.7734 16.5931 70.7734 15.2299C70.7734 13.8668 70.3582 12.8011 69.5348 12.0261C68.7113 11.2511 67.6111 10.8637 66.2479 10.8637H63.404V19.5893H66.2479V19.5962Z"
+                            fill="white" />
+                        <path d="M87.4225 20.1015H80.6967L79.4442 23.1945H74.8496L81.873 7.28638H86.3015L93.3457 23.1945H88.6611L87.4087 20.1015H87.4225ZM86.1009 16.7801L84.0527 11.6872L82.0045 16.7801H86.094H86.1009Z" fill="white" />
+                        <path
+                            d="M115.26 16.3855C115.772 17.0567 116.035 17.8732 116.035 18.8281C116.035 20.2189 115.474 21.2984 114.353 22.0526C113.232 22.8138 111.613 23.1875 109.489 23.1875H100.895V7.2793H109.032C111.059 7.2793 112.609 7.65296 113.668 8.40719C114.727 9.15451 115.26 10.1717 115.26 11.4449C115.26 12.2061 115.073 12.8842 114.706 13.4793C114.332 14.0813 113.807 14.5518 113.128 14.8978C114.035 15.2161 114.748 15.7143 115.267 16.3855H115.26ZM105.351 10.5315V13.5969H108.444C109.959 13.5969 110.713 13.0848 110.713 12.0538C110.713 11.0228 109.952 10.5315 108.444 10.5315H105.351ZM111.488 18.3299C111.488 17.2574 110.7 16.7176 109.122 16.7176H105.351V19.9422H109.122C110.7 19.9422 111.488 19.4024 111.488 18.3299Z"
+                            fill="white" />
+                        <path d="M118.318 7.2793H122.816V23.1875H118.318V7.2793Z" fill="white" />
+                        <path
+                            d="M140.447 16.3855C140.959 17.0567 141.222 17.8732 141.222 18.8281C141.222 20.2189 140.662 21.2984 139.541 22.0526C138.42 22.8138 136.8 23.1875 134.676 23.1875H126.082V7.2793H134.219C136.247 7.2793 137.797 7.65296 138.856 8.40719C139.914 9.15451 140.447 10.1717 140.447 11.4449C140.447 12.2061 140.26 12.8842 139.894 13.4793C139.52 14.0813 138.994 14.5518 138.316 14.8978C139.222 15.2161 139.935 15.7143 140.454 16.3855H140.447ZM130.531 10.5315V13.5969H133.624C135.14 13.5969 135.894 13.0848 135.894 12.0538C135.894 11.0228 135.133 10.5315 133.624 10.5315H130.531ZM136.669 18.3299C136.669 17.2574 135.88 16.7176 134.303 16.7176H130.531V19.9422H134.303C135.88 19.9422 136.669 19.4024 136.669 18.3299Z"
+                            fill="white" />
+                        <path d="M143.561 7.2793H148.058V19.6239H155.649V23.1944H143.561V7.28622V7.2793Z" fill="white" />
+                        <path d="M171.08 19.714V23.1945H158.307V7.28638H170.783V10.7669H162.756V13.4517H169.828V16.8147H162.756V19.7209H171.073L171.08 19.714Z" fill="white" />
+                        <path d="M21.5202 9.2861L16.7942 0.387496C16.6696 0.14531 16.4136 0 16.1437 0C15.8738 0 15.6247 0.152229 15.4933 0.387496L0.0833233 29.3944C-0.0343099 29.6228 -0.0273898 29.8996 0.104083 30.121C0.235555 30.3424 0.477741 30.4808 0.733766 30.4808H10.1859C10.4558 30.4808 10.7049 30.3286 10.8364 30.0933L21.5202 9.98498C21.6379 9.77047 21.6379 9.50752 21.5202 9.29302V9.2861Z" fill="white" />
+                        <path d="M32.2041 29.3943L25.2707 16.3509C25.1461 16.1087 24.8901 15.9634 24.6202 15.9634C24.3503 15.9634 24.1012 16.1156 23.9698 16.3509L17.0363 29.3943C16.9049 29.6503 16.9256 29.9548 17.0986 30.1832C17.2716 30.4115 17.5622 30.5222 17.839 30.4599L24.6202 28.301L31.4014 30.4599C31.4499 30.4738 31.5052 30.4738 31.5536 30.4738C31.782 30.4738 32.0034 30.37 32.1418 30.1832C32.3148 29.9548 32.3356 29.6503 32.2041 29.3943Z" fill="white" />
                     </svg>
-                </button>
-                <button class="MenuIcon--link">
-                    <svg class="Menu_menuIcon Header_menuIcon width=" 40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stop-color="#2ba9a5"></stop>
-                            <stop offset="100%" stop-color="#bbd162"></stop>
-                        </linearGradient>
-                        <rect x="1" y="1" width="38" height="38" rx="19" class="Menu_bg__E9dzi"></rect>
-                        <rect x="1" y="1" width="38" height="38" rx="19" stroke="white" stroke-width="1" fill="none"></rect>
-                        <g style="transform-origin: 50% 50%; transform-box: fill-box; transition: transform 300ms, translate 300ms; transform: translateY(0px) rotate(0deg);">
-                            <path d="M9 16H31" stroke="white" stroke-width="1" stroke-linecap="round"></path>
-                        </g>
-                        <g style="transform-origin: 50% 50%; transform-box: fill-box; transition: transform 300ms, translate 300ms; transform: translateY(0px) rotate(0deg);">
-                            <path d="M9 25H31" stroke="white" stroke-width="1" stroke-linecap="round"></path>
-                        </g>
-                    </svg>
-                </button>
+                </a>
 
+                <section class="headerControls">
+                    <nav class="nav">
+                        <div class="desktopNavLinks">
+                            <a class="desktopNavLink" href="/new-to-ada-bible"><span>New to Ada Bible</span></a>
+                            <a class="desktopNavLink" href="/get-involved"><span>Get Involved</span></a>
+                            <a class="desktopNavLink" href="/locations"><span>Locations</span></a>
+                            <a class="desktopNavLink" href="/give"><span>Give</span></a>
+                        </div>
+
+                        <div class="iconButtons">
+                            <button type="button" aria-label="Search">
+                                <svg class="searchIcon" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <linearGradient id="grad-search" x1="0" y1="0" x2="1" y2="1">
+                                            <stop offset="0%" stop-color="#2ba9a5" />
+                                            <stop offset="100%" stop-color="#bbd162" />
+                                        </linearGradient>
+                                    </defs>
+                                    <rect class="bg" x="1" y="1" width="38" height="38" rx="19" />
+                                    <rect x="1" y="1" width="38" height="38" rx="19" stroke="white" stroke-width="1" fill="none" />
+                                    <circle cx="19" cy="19" r="6" stroke="white" stroke-width="1" />
+                                    <path d="M24 24L28 28" stroke="white" stroke-width="1" stroke-linecap="round" />
+                                </svg>
+                            </button>
+
+                            <button type="button" id="menuButton" aria-label="Menu" aria-expanded="false" aria-controls="megaMenu">
+                                <svg class="menuIcon" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <linearGradient id="grad-menu" x1="0" y1="0" x2="1" y2="1">
+                                            <stop offset="0%" stop-color="#2ba9a5" />
+                                            <stop offset="100%" stop-color="#bbd162" />
+                                        </linearGradient>
+                                    </defs>
+                                    <rect class="bg" x="1" y="1" width="38" height="38" rx="19" />
+                                    <rect x="1" y="1" width="38" height="38" rx="19" stroke="white" stroke-width="1" fill="none" />
+                                    <g class="menuIconLineTop">
+                                        <path d="M9 16H31" stroke="white" stroke-width="1" stroke-linecap="round" />
+                                    </g>
+                                    <g class="menuIconLineBottom">
+                                        <path d="M9 25H31" stroke="white" stroke-width="1" stroke-linecap="round" />
+                                    </g>
+                                </svg>
+                            </button>
+                        </div>
+                    </nav>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ MEGA MENU ============ -->
+    <!-- Extracted from src/components/MegaMenu/index.tsx. Content (nav
+              groups, contact info, socials, locations) pulled live from
+              adabible.org.
+              The legacy CSS-Modules root class (`MegaMenu_megaMenu__QzrhR`)
+              that used to sit alongside `.megaMenu` "for traceability" has
+              been dropped: Styles/ada-styles/ada-megamenu.css — still loaded
+              transitively via theme.css → ada-foundation.css →
+              ada-megamenu.css — targets that exact class with
+              `.MegaMenu_megaMenu__QzrhR:not(.MegaMenu_open) * { pointer-events:
+              none !important; }`. Since this markup's JS toggles a plain
+              `.open` class rather than `.MegaMenu_open`, that legacy selector
+              always matched while the menu was open, silently killing every
+              hover/click interaction (parent-link hover-to-reveal, subnav
+              links, icon buttons — everything) inside it. The class served no
+              functional purpose here (megamenu.scss/js both key off plain
+              `.megaMenu`/`#megaMenu`), so it's removed rather than patched
+              around. -->
+    <div class="megaMenu" id="megaMenu" aria-hidden="true">
+        <div class="shell">
+            <div class="menuWrap">
+                <div class="menuContent">
+
+                    <!-- ================= DESKTOP ================= -->
+                    <div class="largeWrap" data-megamenu-largewrap>
+                        <nav class="parentLinks">
+                            <div class="parentItem" data-megamenu-parent="experience">
+                                <a class="parentLink" href="/experience">
+                                    Experience Ada Bible
+                                    <span class="parentArrow">›</span>
+                                </a>
+                            </div>
+                            <div class="parentItem" data-megamenu-parent="whats-happening">
+                                <a class="parentLink" href="/whats-happening">
+                                    What's Happening
+                                    <span class="parentArrow">›</span>
+                                </a>
+                            </div>
+                            <div class="parentItem" data-megamenu-parent="our-story">
+                                <a class="parentLink" href="/our-story">
+                                    Our Story
+                                    <span class="parentArrow">›</span>
+                                </a>
+                            </div>
+                            <div class="parentItem" data-megamenu-parent="watch-resources">
+                                <a class="parentLink" href="/resources">
+                                    Watch &amp; Resources
+                                    <span class="parentArrow">›</span>
+                                </a>
+                            </div>
+                            <div class="parentItem">
+                                <a class="parentLink" href="/digital-bulletins/pits-trees-and-foundations">Digital Bulletin</a>
+                            </div>
+                        </nav>
+
+                        <div class="rightSide">
+                            <div class="defaultPanel" data-megamenu-default-panel>
+                                <div class="contactWrap">
+                                    <a class="subNavLink" href="https://my.adabible.org/contact">Get In Touch</a>
+                                    <div class="contactInfoRow">
+                                        <a class="contactInfoText" href="mailto:info@adabible.org">info@adabible.org</a>
+                                        <a class="contactInfoText" href="tel:6168687005">616.868.7005</a>
+                                    </div>
+                                    <a class="subNavLink" href="/give">Give</a>
+                                    <a class="subNavLink" href="https://adabible.online.church">Watch Live</a>
+                                </div>
+
+                                <div class="bottomLinks">
+                                    <nav class="socials">
+                                        <a class="subNavLink" href="https://www.facebook.com/adabible" target="_blank" rel="noopener noreferrer">Facebook</a>
+                                        <a class="subNavLink" href="https://www.youtube.com/c/adabible" target="_blank" rel="noopener noreferrer">YouTube</a>
+                                        <a class="subNavLink" href="https://www.instagram.com/adabible/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                                        <a class="subNavLink" href="https://open.spotify.com/show/1QH1lpskwMXLGlGIDnIXDg?si=28f0d27a8622450e" target="_blank" rel="noopener noreferrer">Spotify</a>
+                                    </nav>
+                                    <nav class="locations">
+                                        <a class="locationLink" href="/locations/bella-vista">Bella Vista</a>
+                                        <a class="locationLink" href="/locations/cascade">Cascade</a>
+                                        <a class="locationLink" href="/locations/east-paris">East Paris</a>
+                                        <a class="locationLink" href="/locations/kentwood">Kentwood</a>
+                                        <a class="locationLink" href="/locations/knapp-street">Knapp Street</a>
+                                        <a class="locationLink" href="/locations/west-satellite">West Satellite</a>
+                                    </nav>
+                                </div>
+                            </div>
+
+                            <div class="subNavPanelWrap" data-megamenu-subnav-wrap>
+                                <nav class="subNavPanel" data-megamenu-subnav-panel="experience">
+                                    <a class="subNavLink" href="/visit">Visit</a>
+                                    <a class="subNavLink" href="/ministries">Ministries</a>
+                                    <a class="subNavLink" href="/discipleship">Discipleship Journey</a>
+                                    <a class="subNavLink" href="/join-a-group">Groups</a>
+                                    <a class="subNavLink" href="/serve">Serve</a>
+                                    <a class="subNavLink" href="/baptism">Baptism</a>
+                                    <a class="subNavLink" href="/membership">Become a Member</a>
+                                </nav>
+                                <nav class="subNavPanel" data-megamenu-subnav-panel="whats-happening">
+                                    <a class="subNavLink" href="/sermons/pits-trees-and-foundations">Latest Sermon</a>
+                                    <a class="subNavLink" href="/beyond-the-weekend">Beyond the Weekend Devotional</a>
+                                    <a class="subNavLink" href="/resources?type=sermonGuides">Sermon Discussion Guides</a>
+                                    <a class="subNavLink" href="/events">Events</a>
+                                </nav>
+                                <nav class="subNavPanel" data-megamenu-subnav-panel="our-story">
+                                    <a class="subNavLink" href="/our-story/leadership">Leadership</a>
+                                    <a class="subNavLink" href="/missions">Missions</a>
+                                    <a class="subNavLink" href="/we-believe">We Believe</a>
+                                    <a class="subNavLink" href="/salvation">Salvation</a>
+                                </nav>
+                                <nav class="subNavPanel" data-megamenu-subnav-panel="watch-resources">
+                                    <a class="subNavLink" href="/resources?type=sermons">Past Messages</a>
+                                    <a class="subNavLink" href="/resources?type=sermonSeries">Past Series</a>
+                                    <a class="subNavLink" href="/resources?type=sermonGuides">Sermon Discussion Guides</a>
+                                    <a class="subNavLink" href="/resources?type=devotionals">Devotionals</a>
+                                    <a class="subNavLink" href="https://adabible.server2.stagingspace.site/live/">Watch Live</a>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ================= MOBILE ================= -->
+                    <div class="smallWrap">
+                        <div class="mobileLinksBlock">
+                            <nav class="parentLinks">
+                                <div class="parentItem mobileParentItem" data-megamenu-mobile-item="experience">
+                                    <button type="button" class="primaryLink mobileParentGroupButton" data-megamenu-mobile-toggle="experience">
+                                        <span class="mobileParentLeftArrow" data-megamenu-mobile-arrow>‹</span>
+                                        <span>Experience Ada Bible</span>
+                                        <span class="parentArrow">›</span>
+                                    </button>
+                                </div>
+                                <div class="parentItem mobileParentItem" data-megamenu-mobile-item="whats-happening">
+                                    <button type="button" class="primaryLink mobileParentGroupButton" data-megamenu-mobile-toggle="whats-happening">
+                                        <span class="mobileParentLeftArrow" data-megamenu-mobile-arrow>‹</span>
+                                        <span>What's Happening</span>
+                                        <span class="parentArrow">›</span>
+                                    </button>
+                                </div>
+                                <div class="parentItem mobileParentItem" data-megamenu-mobile-item="our-story">
+                                    <button type="button" class="primaryLink mobileParentGroupButton" data-megamenu-mobile-toggle="our-story">
+                                        <span class="mobileParentLeftArrow" data-megamenu-mobile-arrow>‹</span>
+                                        <span>Our Story</span>
+                                        <span class="parentArrow">›</span>
+                                    </button>
+                                </div>
+                                <div class="parentItem mobileParentItem" data-megamenu-mobile-item="watch-resources">
+                                    <button type="button" class="primaryLink mobileParentGroupButton" data-megamenu-mobile-toggle="watch-resources">
+                                        <span class="mobileParentLeftArrow" data-megamenu-mobile-arrow>‹</span>
+                                        <span>Watch &amp; Resources</span>
+                                        <span class="parentArrow">›</span>
+                                    </button>
+                                </div>
+                                <div class="parentItem mobileParentItem">
+                                    <a class="primaryLink" href="/digital-bulletins/pits-trees-and-foundations">Digital Bulletin</a>
+                                </div>
+                            </nav>
+
+                            <div class="mobileSubNavPanel" data-megamenu-mobile-subpanel="experience">
+                                <nav class="mobileSubNavGrid">
+                                    <a class="mobileSubNavLink" href="/visit">Visit</a>
+                                    <a class="mobileSubNavLink" href="/ministries">Ministries</a>
+                                    <a class="mobileSubNavLink" href="/discipleship">Discipleship Journey</a>
+                                    <a class="mobileSubNavLink" href="/join-a-group">Groups</a>
+                                    <a class="mobileSubNavLink" href="/serve">Serve</a>
+                                    <a class="mobileSubNavLink" href="/baptism">Baptism</a>
+                                    <a class="mobileSubNavLink" href="/membership">Become a Member</a>
+                                </nav>
+                            </div>
+                            <div class="mobileSubNavPanel" data-megamenu-mobile-subpanel="whats-happening">
+                                <nav class="mobileSubNavGrid">
+                                    <a class="mobileSubNavLink" href="/sermons/pits-trees-and-foundations">Latest Sermon</a>
+                                    <a class="mobileSubNavLink" href="/beyond-the-weekend">Beyond the Weekend Devotional</a>
+                                    <a class="mobileSubNavLink" href="/resources?type=sermonGuides">Sermon Discussion Guides</a>
+                                    <a class="mobileSubNavLink" href="/events">Events</a>
+                                </nav>
+                            </div>
+                            <div class="mobileSubNavPanel" data-megamenu-mobile-subpanel="our-story">
+                                <nav class="mobileSubNavGrid">
+                                    <a class="mobileSubNavLink" href="/our-story/leadership">Leadership</a>
+                                    <a class="mobileSubNavLink" href="/missions">Missions</a>
+                                    <a class="mobileSubNavLink" href="/we-believe">We Believe</a>
+                                    <a class="mobileSubNavLink" href="/salvation">Salvation</a>
+                                </nav>
+                            </div>
+                            <div class="mobileSubNavPanel" data-megamenu-mobile-subpanel="watch-resources">
+                                <nav class="mobileSubNavGrid">
+                                    <a class="mobileSubNavLink" href="/resources?type=sermons">Past Messages</a>
+                                    <a class="mobileSubNavLink" href="/resources?type=sermonSeries">Past Series</a>
+                                    <a class="mobileSubNavLink" href="/resources?type=sermonGuides">Sermon Discussion Guides</a>
+                                    <a class="mobileSubNavLink" href="/resources?type=devotionals">Devotionals</a>
+                                    <a class="mobileSubNavLink" href="https://adabible.server2.stagingspace.site/live/">Watch Live</a>
+                                </nav>
+                            </div>
+                        </div>
+
+                        <div class="inquiries">
+                            <a class="primaryLink" href="https://my.adabible.org/contact">Get In Touch</a>
+                            <div class="contactLine">
+                                <a class="contactInfoLink" href="mailto:info@adabible.org">info@adabible.org</a>
+                                <span class="contactPipe">|</span>
+                                <a class="contactInfoLink" href="tel:6168687005">616.868.7005</a>
+                            </div>
+                            <a class="primaryLink giveLink" href="/give">Give</a>
+                            <a class="primaryLink" href="https://adabible.online.church">Watch Live</a>
+                        </div>
+
+                        <div class="bottomLinks">
+                            <nav class="locations">
+                                <a class="mobileLocationLink" href="/locations/bella-vista">Bella Vista</a>
+                                <a class="mobileLocationLink" href="/locations/cascade">Cascade</a>
+                                <a class="mobileLocationLink" href="/locations/east-paris">East Paris</a>
+                                <a class="mobileLocationLink" href="/locations/kentwood">Kentwood</a>
+                                <a class="mobileLocationLink" href="/locations/knapp-street">Knapp Street</a>
+                                <a class="mobileLocationLink" href="/locations/west-satellite">West Satellite</a>
+                            </nav>
+                            <nav class="socials">
+                                <a class="socialIconLink" href="https://www.facebook.com/adabible" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                                    <svg class="socialIconSvg" width="18" height="18" viewBox="4 0 17.5268 17.5268" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <use href="#social-facebook"></use>
+                                    </svg>
+                                </a>
+                                <a class="socialIconLink" href="https://www.youtube.com/c/adabible" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                                    <svg class="socialIconSvg" width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <use href="#social-youtube"></use>
+                                    </svg>
+                                </a>
+                                <a class="socialIconLink" href="https://www.instagram.com/adabible/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                                    <svg class="socialIconSvg" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <use href="#social-instagram"></use>
+                                    </svg>
+                                </a>
+                                <a class="socialIconLink" href="https://open.spotify.com/show/1QH1lpskwMXLGlGIDnIXDg?si=28f0d27a8622450e" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
+                                    <svg class="socialIconSvg" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <use href="#social-spotify"></use>
+                                    </svg>
+                                </a>
+                            </nav>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>

@@ -1,0 +1,59 @@
+<!-- ============ MEDIUM IMPACT HERO ============ -->
+<!-- Extracted from src/heroes/MediumImpact/index.tsx + index.module.scss.
+          Seen live at adabible.org/get-involved (section id="hero--mediumImpact").
+          Content, image, and background pattern pulled from that page. -->
+<div class="heroShell heroShellDark heroShellWithMedia dark" style="background-color: var(--color-main)">
+    <div class="heroStrip" style="background-color: var(--color-off-white)"></div>
+
+    <div style="bottom: 113px" class="backgroundPattern" aria-hidden="true">
+        <img alt="" loading="lazy" src="/Themes/AdaBibleNew/Assets/images/medium-impact-hero-background.svg" />
+    </div>
+
+    <div class="heroContent">
+        <div class="mediumImpactHero">
+            <div class="content">
+                <nav class="breadcrumbs" aria-label="Breadcrumb">
+                    <ol style="display: flex; gap: 0.5rem">
+                        <li class="crumb" style="display: flex; gap: 0.5rem">
+                            <a href="/get-involved">Get Involved</a>
+                        </li>
+                    </ol>
+                </nav>
+
+                <div class="heroBody">
+                    <div class="html">
+                        <h2>Your next step <span class="gradientHighlightDark"><em>starts here</em></span></h2>
+                        <p>Following Jesus means more than attending a service—it means living differently. Getting involved doesn't have to be complicated. Whether you're exploring faith for the first time or looking for your next step, we have clear, simple ways to help you connect and grow. You belong here, and we'd love to show you where to start.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="imageWrap">
+                <div class="imageGradient">
+                    <div class="blackBg"></div>
+                    <div class="stripePattern" style="mix-blend-mode: hard-light"></div>
+                </div>
+                <div class="image">
+                    <!-- Pulls the same per-page Page Attributes Layouts/Site.Master's
+                         code-behind already reads for #template_bgImage
+                         (HeaderBackgroundImageURL: a plain URL; HeaderBackgroundImage:
+                         an Image-field Guid resolved via /GetImage.ashx?guid=). Falls
+                         back to the hardcoded image below if neither is set on the
+                         current page. -->
+                    {%- assign bgImageUrl = CurrentPage | Attribute:'HeaderBackgroundImageURL','RawValue' -%}
+                    {%- if bgImageUrl == '' -%}
+                    {%- assign bgImageGuid = CurrentPage | Attribute:'HeaderBackgroundImage','RawValue' -%}
+                    {%- if bgImageGuid != '' -%}
+                    {%- assign bgImageUrl = '/GetImage.ashx?guid=' | Append:bgImageGuid -%}
+                    {%- endif -%}
+                    {%- endif -%}
+                    {%- if bgImageUrl != '' -%}
+                    <img class="media" alt="" loading="eager" src="{{ bgImageUrl }}" />
+                    {%- else -%}
+                    <img class="media" alt="" loading="eager" src="/Themes/AdaBibleNew/Assets/images/FPO.jpg" />
+                    {%- endif -%}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

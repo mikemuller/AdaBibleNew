@@ -7,7 +7,6 @@
   5. ASP.Net Overrides - Yep they get it wrong too sometimes
 */
 @import 'rock-styles.css';
-@import 'ada-styles/ada-foundation.css';
 :root {
   --base-interface-strongest: #0a0a0a;
   --base-interface-stronger: #0d1117;
