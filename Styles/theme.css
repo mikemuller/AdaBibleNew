@@ -41432,9 +41432,11 @@ fieldset[disabled] .btn-danger-solid.focus {
 */
 html {
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 body {
   background-color: #f5f3e8;
+  overflow-x: hidden;
 }
 main {
   display: block;
