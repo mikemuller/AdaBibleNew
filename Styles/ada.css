@@ -1642,14 +1642,12 @@ strong {
 
 .footerInner {
   width: 100%;
-  max-width: var(--max-width);
-  margin: 0 auto;
   box-sizing: border-box;
-  padding: 100px var(--gutter-padding) 160px;
+  padding: 100px 0 160px;
 }
 @media (max-width: 1024px) {
   .footerInner {
-    padding: 56px 24px 96px;
+    padding: 56px 0 96px;
   }
 }
 

@@ -25,6 +25,14 @@
       "oAP" : "\/.gitignore",
       "oF" : 0
     },
+    "\/.vscode\/sftp.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/.vscode\/sftp-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
     "\/Assets\/fonts\/montserrat\/Montserrat-Italic-VariableFont_wght.ttf" : {
       "cB" : 0,
       "ft" : 8192,
@@ -980,7 +988,7 @@
       "co" : 0,
       "ft" : 16,
       "ma" : 0,
-      "oA" : 1,
+      "oA" : 0,
       "oAP" : "\/Styles\/ada-styles\/ada-foundation-min.css",
       "oF" : 0,
       "pg" : 0
@@ -1114,8 +1122,8 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/Styles\/scss\/ada.css",
-      "oF" : 0,
+      "oAP" : "\/Styles\/ada.css",
+      "oF" : 2,
       "oS" : 0,
       "pg" : 0
     },

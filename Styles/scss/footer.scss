@@ -2,9 +2,10 @@
 // src/layout/Footer/index.module.scss + src/layout/Footer/Component.tsx
 //
 // The original Footer is wrapped in <Gutter> + <Padding> layout helpers.
-// Those are reproduced here as a single simplified .footerInner wrapper
-// rather than pulled in as separate components (out of scope for a
-// static header/footer extraction).
+// The Gutter half is now the shared `.gutter.narrow` wrapper (Ada-footer.lava)
+// that every other block already uses, so .footerInner only needs to
+// reproduce the Padding half (vertical spacing) — giving it its own
+// max-width/horizontal padding too would double up with the wrapper's.
 
 @use './shared' as *;
 
@@ -28,13 +29,11 @@
 
 .footerInner {
   width: 100%;
-  max-width: var(--max-width);
-  margin: 0 auto;
   box-sizing: border-box;
-  padding: 100px var(--gutter-padding) 160px;
+  padding: 100px 0 160px;
 
   @include mid-break {
-    padding: 56px 24px 96px;
+    padding: 56px 0 96px;
   }
 }
 

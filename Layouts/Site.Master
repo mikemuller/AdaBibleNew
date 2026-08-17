@@ -87,24 +87,27 @@
 
       <main>
         <Rock:Zone Name="AdaHero" runat="server" />
-          <div id="subNavigation">
-              <div class="pull-right">
-                  <Rock:Zone Name="Login" runat="server" />
-              </div>
-              <Rock:Zone Name="SubNavigation" runat="server" />
-          </div>
 
           <div id="iFrameContainer" runat="server">
               <Rock:Zone Name="iFrameCell" runat="server" />
           </div>
 
-          <section class="main-feature">
+          <div class="main-feature">
+            <div class="gutter narrow">
               <Rock:Zone Name="Feature" runat="server" />
+            </div>
           </section>
 
+<div class="gutter narrow">
           <asp:ContentPlaceHolder ID="feature" runat="server"></asp:ContentPlaceHolder>
+</div>
+          <section class="block" style="background-color: var(--color-off-white)">
+            <div class="gutter narrow">
 
-          <asp:ContentPlaceHolder ID="main" runat="server"></asp:ContentPlaceHolder>
+              <asp:ContentPlaceHolder ID="main" runat="server"></asp:ContentPlaceHolder>
+
+            </div>
+          </section>
 
           <section class="lower-feature">
               <Rock:Zone Name="Lower Feature" runat="server" />
