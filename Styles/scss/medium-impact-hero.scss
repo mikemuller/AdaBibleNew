@@ -247,6 +247,16 @@
     }
   }
 
+  // The Rock page's actual title (CurrentPage.Title, Ada-hero.lava) — kept as
+  // a real <h1> for SEO/accessibility (the source app's <h2> further down is
+  // hand-written marketing copy, not the page title), but styled as a small
+  // label rather than a second big heading so it doesn't compete with it.
+  .pageTitle {
+    @include button-label-basic-sans;
+    margin: 0 0 8px;
+    opacity: 0.7;
+  }
+
   .breadcrumbs {
     margin-bottom: var(--small-gap);
   }
