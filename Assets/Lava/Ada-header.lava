@@ -32,10 +32,19 @@
                 <section class="headerControls">
                     <nav class="nav">
                         <div class="desktopNavLinks">
-                            <a class="desktopNavLink" href="/new-to-ada-bible"><span>New to Ada Bible</span></a>
+                            {% comment %} <a class="desktopNavLink" href="/new-to-ada-bible"><span>New to Ada Bible</span></a>
                             <a class="desktopNavLink" href="/get-involved"><span>Get Involved</span></a>
                             <a class="desktopNavLink" href="/locations"><span>Locations</span></a>
-                            <a class="desktopNavLink" href="/give"><span>Give</span></a>
+                            <a class="desktopNavLink" href="/give"><span>Give</span></a> {% endcomment %}
+
+                            <a class="desktopNavLink" href="https://www.adabible.org">Main Site</a>
+                            {% if CurrentPerson.FullName %}
+                            <a class="desktopNavLink" href="/MyAccount">{{ CurrentPerson.FullName }}</a>
+                            {% else %}
+
+                            {% endif %}
+
+                            <a class="desktopNavLink" href="/">Please Log In</a>
                         </div>
 
                         <div class="iconButtons">
@@ -54,6 +63,7 @@
                                 </svg>
                             </button>
 
+                            {% comment %}
                             <button type="button" id="menuButton" aria-label="Menu" aria-expanded="false" aria-controls="megaMenu">
                                 <svg class="menuIcon" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <defs>
@@ -72,6 +82,9 @@
                                     </g>
                                 </svg>
                             </button>
+                            {% endcomment %}
+
+
                         </div>
                     </nav>
                 </section>
