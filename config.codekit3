@@ -327,6 +327,14 @@
       "oAP" : "\/Assets\/Lava\/Ada-footer.lava",
       "oF" : 0
     },
+    "\/Assets\/Lava\/Ada-header-full.lava" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/Assets\/Lava\/Ada-header-full.lava",
+      "oF" : 0
+    },
     "\/Assets\/Lava\/Ada-header.lava" : {
       "cB" : 0,
       "ft" : 8192,

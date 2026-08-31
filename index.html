@@ -134,6 +134,21 @@
             </nav>
           </section>
         </div>
+
+        <!-- Mobile-only duplicate of .desktopNavLinks, extracted from
+             Component.client.tsx's `showMobileHeaderLinks` row: the source
+             app only mounts this when `isMobile && activeMenu === 'mega-menu'`;
+             here it's always in the DOM and js/megamenu.js toggles
+             `.header.menuOpen` (which Styles/ada.css gates this row's
+             display on) to match. -->
+        <div class="mobileHeaderLinksRow">
+          <nav class="mobileHeaderLinks">
+            <a class="mobileHeaderLink" href="/new-to-ada-bible"><span>New to Ada Bible</span></a>
+            <a class="mobileHeaderLink" href="/get-involved"><span>Get Involved</span></a>
+            <a class="mobileHeaderLink" href="/locations"><span>Locations</span></a>
+            <a class="mobileHeaderLink" href="/give"><span>Give</span></a>
+          </nav>
+        </div>
       </div>
     </div>
 
@@ -153,25 +168,41 @@
                 <div class="parentItem" data-megamenu-parent="experience">
                   <a class="parentLink" href="/experience">
                     Experience Ada Bible
-                    <span class="parentArrow">›</span>
+                    <span class="parentArrow">
+                      <svg class="parentArrowIcon" width="19" height="30" viewBox="0 0 19 30" fill="none" aria-hidden="true">
+                        <use href="#menu-caret-right"></use>
+                      </svg>
+                    </span>
                   </a>
                 </div>
                 <div class="parentItem" data-megamenu-parent="whats-happening">
                   <a class="parentLink" href="/whats-happening">
                     What's Happening
-                    <span class="parentArrow">›</span>
+                    <span class="parentArrow">
+                      <svg class="parentArrowIcon" width="19" height="30" viewBox="0 0 19 30" fill="none" aria-hidden="true">
+                        <use href="#menu-caret-right"></use>
+                      </svg>
+                    </span>
                   </a>
                 </div>
                 <div class="parentItem" data-megamenu-parent="our-story">
                   <a class="parentLink" href="/our-story">
                     Our Story
-                    <span class="parentArrow">›</span>
+                    <span class="parentArrow">
+                      <svg class="parentArrowIcon" width="19" height="30" viewBox="0 0 19 30" fill="none" aria-hidden="true">
+                        <use href="#menu-caret-right"></use>
+                      </svg>
+                    </span>
                   </a>
                 </div>
                 <div class="parentItem" data-megamenu-parent="watch-resources">
                   <a class="parentLink" href="/resources">
                     Watch &amp; Resources
-                    <span class="parentArrow">›</span>
+                    <span class="parentArrow">
+                      <svg class="parentArrowIcon" width="19" height="30" viewBox="0 0 19 30" fill="none" aria-hidden="true">
+                        <use href="#menu-caret-right"></use>
+                      </svg>
+                    </span>
                   </a>
                 </div>
                 <div class="parentItem">
@@ -248,30 +279,62 @@
                 <nav class="parentLinks">
                   <div class="parentItem mobileParentItem" data-megamenu-mobile-item="experience">
                     <button type="button" class="primaryLink mobileParentGroupButton" data-megamenu-mobile-toggle="experience">
-                      <span class="mobileParentLeftArrow" data-megamenu-mobile-arrow>‹</span>
+                      <span class="mobileParentLeftArrow" data-megamenu-mobile-arrow>
+                        <svg class="mobileParentLeftArrowIcon" width="19" height="30" viewBox="0 0 19 30" fill="none" aria-hidden="true">
+                          <use href="#menu-caret-left"></use>
+                        </svg>
+                      </span>
                       <span>Experience Ada Bible</span>
-                      <span class="parentArrow">›</span>
+                      <span class="parentArrow">
+                      <svg class="parentArrowIcon" width="19" height="30" viewBox="0 0 19 30" fill="none" aria-hidden="true">
+                        <use href="#menu-caret-right"></use>
+                      </svg>
+                    </span>
                     </button>
                   </div>
                   <div class="parentItem mobileParentItem" data-megamenu-mobile-item="whats-happening">
                     <button type="button" class="primaryLink mobileParentGroupButton" data-megamenu-mobile-toggle="whats-happening">
-                      <span class="mobileParentLeftArrow" data-megamenu-mobile-arrow>‹</span>
+                      <span class="mobileParentLeftArrow" data-megamenu-mobile-arrow>
+                        <svg class="mobileParentLeftArrowIcon" width="19" height="30" viewBox="0 0 19 30" fill="none" aria-hidden="true">
+                          <use href="#menu-caret-left"></use>
+                        </svg>
+                      </span>
                       <span>What's Happening</span>
-                      <span class="parentArrow">›</span>
+                      <span class="parentArrow">
+                      <svg class="parentArrowIcon" width="19" height="30" viewBox="0 0 19 30" fill="none" aria-hidden="true">
+                        <use href="#menu-caret-right"></use>
+                      </svg>
+                    </span>
                     </button>
                   </div>
                   <div class="parentItem mobileParentItem" data-megamenu-mobile-item="our-story">
                     <button type="button" class="primaryLink mobileParentGroupButton" data-megamenu-mobile-toggle="our-story">
-                      <span class="mobileParentLeftArrow" data-megamenu-mobile-arrow>‹</span>
+                      <span class="mobileParentLeftArrow" data-megamenu-mobile-arrow>
+                        <svg class="mobileParentLeftArrowIcon" width="19" height="30" viewBox="0 0 19 30" fill="none" aria-hidden="true">
+                          <use href="#menu-caret-left"></use>
+                        </svg>
+                      </span>
                       <span>Our Story</span>
-                      <span class="parentArrow">›</span>
+                      <span class="parentArrow">
+                      <svg class="parentArrowIcon" width="19" height="30" viewBox="0 0 19 30" fill="none" aria-hidden="true">
+                        <use href="#menu-caret-right"></use>
+                      </svg>
+                    </span>
                     </button>
                   </div>
                   <div class="parentItem mobileParentItem" data-megamenu-mobile-item="watch-resources">
                     <button type="button" class="primaryLink mobileParentGroupButton" data-megamenu-mobile-toggle="watch-resources">
-                      <span class="mobileParentLeftArrow" data-megamenu-mobile-arrow>‹</span>
+                      <span class="mobileParentLeftArrow" data-megamenu-mobile-arrow>
+                        <svg class="mobileParentLeftArrowIcon" width="19" height="30" viewBox="0 0 19 30" fill="none" aria-hidden="true">
+                          <use href="#menu-caret-left"></use>
+                        </svg>
+                      </span>
                       <span>Watch &amp; Resources</span>
-                      <span class="parentArrow">›</span>
+                      <span class="parentArrow">
+                      <svg class="parentArrowIcon" width="19" height="30" viewBox="0 0 19 30" fill="none" aria-hidden="true">
+                        <use href="#menu-caret-right"></use>
+                      </svg>
+                    </span>
                     </button>
                   </div>
                   <div class="parentItem mobileParentItem">
@@ -1239,6 +1302,24 @@
         <path
           d="M17.3522 2.65983C17.3522 2.65983 17.181 1.45144 16.6539 0.920841C15.9863 0.222508 15.2401 0.219085 14.8978 0.178006C12.4468 -9.79385e-08 8.76682 0 8.76682 0H8.75997C8.75997 0 5.08003 -9.79385e-08 2.62902 0.178006C2.2867 0.219085 1.54044 0.222508 0.872916 0.920841C0.345743 1.45144 0.178006 2.65983 0.178006 2.65983C0.178006 2.65983 0 4.08045 0 5.49766V6.82586C0 8.24307 0.174583 9.66369 0.174583 9.66369C0.174583 9.66369 0.345743 10.8721 0.869493 11.4027C1.53702 12.101 2.41336 12.0771 2.8036 12.1524C4.20711 12.2859 8.76339 12.3269 8.76339 12.3269C8.76339 12.3269 12.4468 12.3201 14.8978 12.1455C15.2401 12.1044 15.9863 12.101 16.6539 11.4027C17.181 10.8721 17.3522 9.66369 17.3522 9.66369C17.3522 9.66369 17.5268 8.24649 17.5268 6.82586V5.49766C17.5268 4.08045 17.3522 2.65983 17.3522 2.65983ZM6.95252 8.43819V3.5122L11.6868 5.98375L6.95252 8.43819Z"
           fill="white" fill-opacity="0.6" />
+      </g>
+      <!-- Mega-menu parent-item chevron, extracted from AdaBiblePayload:
+           public/icons/menu-caret-right.svg (viewBox 0 0 19 30). The source
+           app swaps this for the mirrored menu-caret-left.svg when that
+           item's group is the active one; since this is a single shared
+           shape referenced by <use>, .megaMenu's .parentLinkActive
+           .parentArrowIcon flips it with transform:scaleX(-1) instead
+           (menu-caret-left.svg's path is an exact horizontal mirror of this
+           one) rather than needing a second symbol. -->
+      <g id="menu-caret-right">
+        <path d="M1.38818 28.4397L15.3882 14.9397L1.38818 1.4397" stroke="#FFFDF1" stroke-width="4" />
+      </g>
+      <!-- Mobile accordion's "back" chevron, extracted from
+           AdaBiblePayload: public/icons/menu-caret-left.svg (viewBox 0 0 19
+           30) — always left-facing, so unlike menu-caret-right above it
+           never needs a flip. -->
+      <g id="menu-caret-left">
+        <path d="M16.8813 1.4397L2.88135 14.9397L16.8813 28.4397" stroke="#FFFDF1" stroke-width="4" />
       </g>
     </defs>
   </svg>

@@ -26,8 +26,9 @@
                     <div class="html">
                         <h2>{{ 'Global' | Page:'Title' }}</h2>
                         <h2>{{ CurrentPage.Title }}</h2>
-                        <h2>Your next step <span class="gradientHighlightDark"><em>starts here</em></span></h2>
-                        <p>Following Jesus means more than attending a service—it means living differently. Getting involved doesn't have to be complicated. Whether you're exploring faith for the first time or looking for your next step, we have clear, simple ways to help you connect and grow. You belong here, and we'd love to show you where to start.</p>
+                        {% comment %} <h2>Your next step <span class="gradientHighlightDark"><em>starts here</em></span></h2>
+                        <p>Following Jesus means more than attending a service—it means living differently. Getting involved doesn't have to be complicated. Whether you're exploring faith for the first time or looking for your next step, we have clear, simple ways to help you connect and grow. You belong here, and we'd love to show you where to start.</p> {% endcomment %}
+
                     </div>
                 </div>
             </div>

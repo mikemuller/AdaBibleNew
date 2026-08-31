@@ -42620,7 +42620,7 @@ p.thinkboxcreative {
   }
 }
 .four-buttons {
-  max-width: 80%;
+  max-width: 100%;
   display: flex;
   flex-wrap: wrap;
 }

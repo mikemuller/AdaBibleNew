@@ -156,18 +156,66 @@
   display: flex;
   align-items: center;
   height: 100%;
+  // Without this, a flex item's automatic minimum width defaults to its
+  // content's min-content size, so .navWrap (space-between: .logo,
+  // .headerControls) would rather let this overflow than actually shrink
+  // it — which defeats .desktopNavLinks's own overflow-x:auto below, since
+  // nothing upstream ever asks it to be smaller than its content in the
+  // first place. Needed on every flex-item link in the chain down to
+  // .desktopNavLinks, not just there.
+  min-width: 0;
 }
 
 .nav {
   display: flex;
   align-items: center;
   gap: 40px;
+  min-width: 0;
+
+  // Rock's Styles/bootstrap.css (Bootstrap 3) ships a clearfix rule —
+  // `.nav::before, .nav::after { display: table; content: " "; }` — that
+  // targets the built-in Bootstrap `.nav` component, which collides with
+  // this theme's own plain `.nav` class name (the source app has no such
+  // collision: its `.nav` is a hashed CSS-Modules class). Because this
+  // `.nav` is `display:flex`, those two generated-content pseudo-elements
+  // become extra flex items, and `gap: 40px` above inserts a 40px gap on
+  // BOTH sides of them — i.e. 80px of phantom space that doesn't belong to
+  // any real content. That's what was pushing #menuButton off-position:
+  // shifted right past the header's right edge (and off past the viewport
+  // entirely on wide screens with a long .desktopNavLinks list), and
+  // sitting ~40px further from the edge than the live site on mobile
+  // (where .desktopNavLinks is display:none and only the pseudo-elements +
+  // iconButtons remain). Suppressing the pseudo-elements removes the
+  // phantom flex items and their gaps entirely.
+  &::before,
+  &::after {
+    content: none;
+  }
 }
 
 .desktopNavLinks {
   display: flex;
   align-items: center;
   gap: 40px;
+  // The source app's own .desktopNavLinks is always just 4 short marketing
+  // links, so it never needs to shrink. This theme reuses the same header
+  // on pages (e.g. the "my." portal's utility pages) whose nav-item list is
+  // longer/wider than that. Without min-width:0 a flex item's automatic
+  // minimum size is its content's own min-content size — so with enough
+  // nowrap links, .desktopNavLinks (and everything after it in .nav) would
+  // rather overflow the header than shrink, pushing #menuButton past the
+  // right edge and, on wide-enough content, off past the viewport entirely.
+  // overflow-x:auto (which also drops the auto-minimum to 0, letting it
+  // actually shrink) lets it scroll internally instead, so .iconButtons
+  // stays fully on-screen and flush to the header's right edge regardless
+  // of how many nav items are configured.
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   @include mid-break {
     display: none;
@@ -191,6 +239,10 @@
   display: flex;
   align-items: center;
   gap: 40px;
+  // Never let .desktopNavLinks's overflow-x:auto scrolling above "borrow"
+  // space from this by shrinking it too — the menu button must always
+  // render at full size.
+  flex-shrink: 0;
 
   @include mid-break {
     gap: 10px;
@@ -215,6 +267,54 @@
     width: 32px;
     height: 32px;
   }
+}
+
+// Mobile-only row of the primary nav links (the ones .desktopNavLinks hides
+// below mid-break), shown under the logo row while the mega menu is open.
+// The source app only mounts this markup when `isMobile && activeMenu ===
+// 'mega-menu'`; since this static markup can't conditionally mount, it's
+// always in the DOM and gated by the `.header.menuOpen` state class that
+// js/megamenu.js toggles instead (display:none otherwise, and `.mid-break`
+// still keeps it out of the desktop layout regardless).
+.mobileHeaderLinksRow {
+  display: none;
+}
+
+.header.menuOpen .navWrap {
+  @include mid-break {
+    border-bottom: 1px solid #262629;
+  }
+}
+
+.header.menuOpen .mobileHeaderLinksRow {
+  @include mid-break {
+    display: flex;
+    align-items: center;
+    height: 65px;
+    width: 100%;
+  }
+}
+
+.mobileHeaderLinks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 33px;
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.mobileHeaderLink {
+  @include button-label-basic-sans;
+  margin: 0;
+  color: #fffdf199;
+  text-decoration: underline;
+  white-space: nowrap;
 }
 
 // Icon hover glow, re-created from

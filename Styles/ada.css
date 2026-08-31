@@ -582,6 +582,10 @@ strong {
   font: inherit;
 }
 
+.splash-form-btn .btn-link {
+  margin: 10px 0;
+}
+
 .header {
   position: absolute;
   top: 0;
@@ -702,18 +706,29 @@ strong {
   display: flex;
   align-items: center;
   height: 100%;
+  min-width: 0;
 }
 
 .nav {
   display: flex;
   align-items: center;
   gap: 40px;
+  min-width: 0;
+}
+.nav::before, .nav::after {
+  content: none;
 }
 
 .desktopNavLinks {
   display: flex;
   align-items: center;
   gap: 40px;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.desktopNavLinks::-webkit-scrollbar {
+  display: none;
 }
 @media (max-width: 1024px) {
   .desktopNavLinks {
@@ -742,6 +757,7 @@ strong {
   display: flex;
   align-items: center;
   gap: 40px;
+  flex-shrink: 0;
 }
 @media (max-width: 1024px) {
   .iconButtons {
@@ -769,6 +785,51 @@ strong {
     width: 32px;
     height: 32px;
   }
+}
+
+.mobileHeaderLinksRow {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .header.menuOpen .navWrap {
+    border-bottom: 1px solid #262629;
+  }
+}
+
+@media (max-width: 1024px) {
+  .header.menuOpen .mobileHeaderLinksRow {
+    display: flex;
+    align-items: center;
+    height: 65px;
+    width: 100%;
+  }
+}
+
+.mobileHeaderLinks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 33px;
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.mobileHeaderLinks::-webkit-scrollbar {
+  display: none;
+}
+
+.mobileHeaderLink {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(14px, 0.5vw + 11px, 16px);
+  line-height: clamp(20px, 1.5vw + 13px, 30px);
+  letter-spacing: 0;
+  margin: 0;
+  color: rgba(255, 253, 241, 0.6);
+  text-decoration: underline;
+  white-space: nowrap;
 }
 
 .searchIcon .bg {
@@ -921,6 +982,14 @@ strong {
   min-width: clamp(14px, 1.2vw, 19px);
   height: clamp(22px, 1.9vw, 30px);
   flex-shrink: 0;
+}
+.megaMenu .parentArrowIcon {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.megaMenu .parentItem.parentLinkActive .parentArrowIcon {
+  transform: scaleX(-1);
 }
 .megaMenu .largeWrap {
   display: flex;
@@ -1193,6 +1262,11 @@ strong {
   min-width: 9px;
   opacity: 0.6;
   margin-right: 8px;
+}
+.megaMenu .mobileParentLeftArrowIcon {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 .megaMenu .mobileSubNavPanel {
   background: #262629;

@@ -166,6 +166,25 @@
     flex-shrink: 0;
   }
 
+  // Source: public/icons/menu-caret-right.svg via <use>, not a text glyph —
+  // a literal "›" character here inherits the surrounding heading font
+  // (up to 58px) instead of rendering as the live site's small, thin
+  // chevron icon.
+  .parentArrowIcon {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  // Desktop only: the source swaps this icon for the mirrored
+  // menu-caret-left.svg when this item's group is the one currently open
+  // (menu-caret-right.svg's path is an exact horizontal mirror of it, so a
+  // CSS flip reproduces that without a second symbol). js/megamenu.js
+  // toggles .parentLinkActive on the active item's .parentItem.
+  .parentItem.parentLinkActive .parentArrowIcon {
+    transform: scaleX(-1);
+  }
+
   // ================= DESKTOP =================
 
   .largeWrap {
@@ -493,6 +512,14 @@
       opacity: 0.6;
       margin-right: 8px;
     }
+  }
+
+  // Same fix as .parentArrowIcon above, for menu-caret-left.svg (this one
+  // never needs a flip — it's already the "back" direction).
+  .mobileParentLeftArrowIcon {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 
   .mobileSubNavPanel {

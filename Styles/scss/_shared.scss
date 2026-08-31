@@ -96,7 +96,7 @@ $breakpoint-xxl-width: 1920px;
   letter-spacing: 0;
   margin: 0 0 clamp(24px, 1vw + 20px, 28px);
 
-  & > em {
+  &>em {
     @include h1-emphasis;
   }
 }
@@ -110,7 +110,7 @@ $breakpoint-xxl-width: 1920px;
   letter-spacing: 0;
   margin: 0 0 clamp(24px, 1vw + 20px, 28px);
 
-  & > em {
+  &>em {
     @include h2-emphasis;
   }
 }
@@ -181,7 +181,7 @@ $breakpoint-xxl-width: 1920px;
   margin: 0 0 clamp(24px, 1vw + 20px, 28px);
   max-width: 739px;
 
-  & > strong {
+  &>strong {
     font-weight: 700;
   }
 }
@@ -249,11 +249,9 @@ $breakpoint-xxl-width: 1920px;
 }
 
 // Hover border used by card/button components, from src/scss/mixins.scss.
-@mixin gradient-border-hover(
-  $base-padding: 1px,
+@mixin gradient-border-hover($base-padding: 1px,
   $hover-padding: 3px,
-  $gradient: linear-gradient(to right, #bbd162, #2ba9a5)
-) {
+  $gradient: linear-gradient(to right, #bbd162, #2ba9a5)) {
   position: relative;
   cursor: pointer;
 
@@ -343,8 +341,7 @@ $breakpoint-xxl-width: 1920px;
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('../Assets/fonts/montserrat/Montserrat-Italic-VariableFont_wght.ttf')
-    format('truetype-variations');
+  src: url('../Assets/fonts/montserrat/Montserrat-Italic-VariableFont_wght.ttf') format('truetype-variations');
   font-weight: 100 900;
   font-style: italic;
   font-display: optional;
@@ -536,12 +533,15 @@ strong {
     @include extra-large-break {
       padding-top: 128px;
     }
+
     @include large-break {
       padding-top: 64px;
     }
+
     @include mid-break {
       padding-top: 48px;
     }
+
     @include small-break {
       padding-top: 32px;
     }
@@ -553,12 +553,15 @@ strong {
     @include extra-large-break {
       padding-bottom: 128px;
     }
+
     @include large-break {
       padding-bottom: 64px;
     }
+
     @include mid-break {
       padding-bottom: 48px;
     }
+
     @include small-break {
       padding-bottom: 32px;
     }
@@ -570,12 +573,15 @@ strong {
     @include extra-large-break {
       padding-top: 156px;
     }
+
     @include large-break {
       padding-top: 108px;
     }
+
     @include mid-break {
       padding-top: 72px;
     }
+
     @include small-break {
       padding-top: 48px;
     }
@@ -587,12 +593,15 @@ strong {
     @include extra-large-break {
       padding-bottom: 156px;
     }
+
     @include large-break {
       padding-bottom: 108px;
     }
+
     @include mid-break {
       padding-bottom: 72px;
     }
+
     @include small-break {
       padding-bottom: 48px;
     }
@@ -613,14 +622,15 @@ strong {
     gap: 32px;
 
     li,
-    > a {
+    >a {
       flex: 0 0 calc(50% - 16px);
       min-width: 0;
     }
 
     @include mid-break {
+
       li,
-      > a {
+      >a {
         flex: 0 0 auto;
         width: auto;
         max-width: 100%;
@@ -629,6 +639,7 @@ strong {
   }
 
   &.black .html {
+
     h1,
     h2,
     h3,
@@ -636,6 +647,7 @@ strong {
     h5 {
       color: white;
     }
+
     p,
     li {
       color: white;
@@ -643,6 +655,7 @@ strong {
   }
 
   &.white .html {
+
     h1,
     h2,
     h3,
@@ -650,6 +663,7 @@ strong {
     h5 {
       color: var(--color-main);
     }
+
     p,
     li {
       color: var(--color-main);
@@ -702,6 +716,7 @@ strong {
       top: -16px;
       left: -16px;
     }
+
     @include extra-small-break {
       top: -12px;
       left: -12px;
@@ -716,6 +731,7 @@ strong {
       top: -16px;
       right: -16px;
     }
+
     @include extra-small-break {
       top: -12px;
       right: -12px;
@@ -735,13 +751,11 @@ strong {
     position: absolute;
     inset: 0;
     opacity: 0.85;
-    background-image: repeating-linear-gradient(
-      115deg,
-      rgba(255, 255, 255, 0.35) 0px,
-      rgba(255, 255, 255, 0.35) 1px,
-      transparent 1px,
-      transparent 5px
-    );
+    background-image: repeating-linear-gradient(115deg,
+        rgba(255, 255, 255, 0.35) 0px,
+        rgba(255, 255, 255, 0.35) 1px,
+        transparent 1px,
+        transparent 5px);
     pointer-events: none;
   }
 }
@@ -821,4 +835,11 @@ strong {
 .gradientHighlightDark {
   @include gradient-highlight-dark;
   font: inherit;
+}
+
+
+.splash-form-btn {
+  .btn-link {
+    margin: 10px 0;
+  }
 }

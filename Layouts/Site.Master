@@ -152,6 +152,25 @@
           <g id="social-youtube">
             <path d="M17.3522 2.65983C17.3522 2.65983 17.181 1.45144 16.6539 0.920841C15.9863 0.222508 15.2401 0.219085 14.8978 0.178006C12.4468 -9.79385e-08 8.76682 0 8.76682 0H8.75997C8.75997 0 5.08003 -9.79385e-08 2.62902 0.178006C2.2867 0.219085 1.54044 0.222508 0.872916 0.920841C0.345743 1.45144 0.178006 2.65983 0.178006 2.65983C0.178006 2.65983 0 4.08045 0 5.49766V6.82586C0 8.24307 0.174583 9.66369 0.174583 9.66369C0.174583 9.66369 0.345743 10.8721 0.869493 11.4027C1.53702 12.101 2.41336 12.0771 2.8036 12.1524C4.20711 12.2859 8.76339 12.3269 8.76339 12.3269C8.76339 12.3269 12.4468 12.3201 14.8978 12.1455C15.2401 12.1044 15.9863 12.101 16.6539 11.4027C17.181 10.8721 17.3522 9.66369 17.3522 9.66369C17.3522 9.66369 17.5268 8.24649 17.5268 6.82586V5.49766C17.5268 4.08045 17.3522 2.65983 17.3522 2.65983ZM6.95252 8.43819V3.5122L11.6868 5.98375L6.95252 8.43819Z" fill="white" fill-opacity="0.6"/>
           </g>
+          <!-- Mega-menu parent-item chevron, extracted from AdaBiblePayload:
+               public/icons/menu-caret-right.svg (viewBox 0 0 19 30). The
+               source app swaps this for the mirrored menu-caret-left.svg
+               when that item's group is the active one; since this is a
+               single shared shape referenced by <use>, .megaMenu's
+               .parentLinkActive .parentArrowIcon flips it with
+               transform:scaleX(-1) instead (menu-caret-left.svg's path is
+               an exact horizontal mirror of this one) rather than needing a
+               second symbol. -->
+          <g id="menu-caret-right">
+            <path d="M1.38818 28.4397L15.3882 14.9397L1.38818 1.4397" stroke="#FFFDF1" stroke-width="4"/>
+          </g>
+          <!-- Mobile accordion's "back" chevron, extracted from
+               AdaBiblePayload: public/icons/menu-caret-left.svg (viewBox 0
+               0 19 30) — always left-facing, so unlike menu-caret-right
+               above it never needs a flip. -->
+          <g id="menu-caret-left">
+            <path d="M16.8813 1.4397L2.88135 14.9397L16.8813 28.4397" stroke="#FFFDF1" stroke-width="4"/>
+          </g>
         </defs>
       </svg>
 

@@ -32,27 +32,35 @@
                 <section class="headerControls">
                     <nav class="nav">
                         <div class="desktopNavLinks">
-                            <a class="desktopNavLink" href="/new-to-ada-bible"><span>New to Ada Bible</span></a>
+                            {% comment %} <a class="desktopNavLink" href="/new-to-ada-bible"><span>New to Ada Bible</span></a>
                             <a class="desktopNavLink" href="/get-involved"><span>Get Involved</span></a>
                             <a class="desktopNavLink" href="/locations"><span>Locations</span></a>
-                            <a class="desktopNavLink" href="/give"><span>Give</span></a>
+                            <a class="desktopNavLink" href="/give"><span>Give</span></a> {% endcomment %}
+
+                            <a href="/page/1166" class="desktopNavLink">Giving</a>
+
+                            <a href="/page/961" class="desktopNavLink">Prayer Chain</a>
+
+                            <a href="/page/1289" class="desktopNavLink">Volunteer Application</a>
+
+                            <a href="/ChangeMyPassword" class="desktopNavLink">Change Password</a>
+
+                            <a href="/beyond-the-weekend" class="desktopNavLink">Beyond the Weekend Signup</a>
+
+                            <a href="/sermon-discussion-guide" class="desktopNavLink">Sermon Discussion Guide</a>
+
+                            {% comment %} <a class="desktopNavLink" href="https://www.adabible.org">Main Site</a> {% endcomment %}
+                            {% if CurrentPerson.FullName %}
+                            <a class="desktopNavLink" href="/MyAccount">Logged in as: {{ CurrentPerson.FullName }}</a>
+                            <a href="/Logout" class="desktopNavLink">Logout</a>
+                            {% else %}
+                            <a class="desktopNavLink" href="/Login?returnurl=%2F">Please Log In</a>
+
+                            {% endif %}
                         </div>
 
                         <div class="iconButtons">
-                            <button type="button" aria-label="Search">
-                                <svg class="searchIcon" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <defs>
-                                        <linearGradient id="grad-search" x1="0" y1="0" x2="1" y2="1">
-                                            <stop offset="0%" stop-color="#2ba9a5" />
-                                            <stop offset="100%" stop-color="#bbd162" />
-                                        </linearGradient>
-                                    </defs>
-                                    <rect class="bg" x="1" y="1" width="38" height="38" rx="19" />
-                                    <rect x="1" y="1" width="38" height="38" rx="19" stroke="white" stroke-width="1" fill="none" />
-                                    <circle cx="19" cy="19" r="6" stroke="white" stroke-width="1" />
-                                    <path d="M24 24L28 28" stroke="white" stroke-width="1" stroke-linecap="round" />
-                                </svg>
-                            </button>
+
 
                             <button type="button" id="menuButton" aria-label="Menu" aria-expanded="false" aria-controls="megaMenu">
                                 <svg class="menuIcon" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -72,9 +80,42 @@
                                     </g>
                                 </svg>
                             </button>
+
+
+
                         </div>
                     </nav>
                 </section>
+            </div>
+
+            <!-- Mobile-only duplicate of .desktopNavLinks, extracted from
+           Component.client.tsx's `showMobileHeaderLinks` row: the source
+           app only mounts this when `isMobile && activeMenu === 'mega-menu'`;
+           here it's always in the DOM and js/megamenu.js toggles
+           `.header.menuOpen` (which Styles/ada.css gates this row's
+           display on) to match. -->
+            <div class="mobileHeaderLinksRow">
+                <nav class="mobileHeaderLinks">
+                    <a href="/page/1166" class="mobileHeaderLink">Giving</a>
+
+                    <a href="/page/961" class="mobileHeaderLink">Prayer Chain</a>
+
+                    <a href="/page/1289" class="mobileHeaderLink">Volunteer Application</a>
+
+                    <a href="/ChangeMyPassword" class="mobileHeaderLink">Change Password</a>
+
+                    <a href="/beyond-the-weekend" class="mobileHeaderLink">Beyond the Weekend Signup</a>
+
+                    <a href="/sermon-discussion-guide" class="mobileHeaderLink">Sermon Discussion Guide</a>
+
+                    {% if CurrentPerson.FullName %}
+                    <a class="mobileHeaderLink" href="/MyAccount">Logged in as: {{ CurrentPerson.FullName }}</a>
+                    <a href="/Logout" class="mobileHeaderLink">Logout</a>
+                    {% else %}
+                    <a class="mobileHeaderLink" href="/Login?returnurl=%2F">Please Log In</a>
+
+                    {% endif %}
+                </nav>
             </div>
         </div>
     </div>
@@ -108,25 +149,41 @@
                             <div class="parentItem" data-megamenu-parent="experience">
                                 <a class="parentLink" href="/experience">
                                     Experience Ada Bible
-                                    <span class="parentArrow">›</span>
+                                    <span class="parentArrow">
+                                        <svg class="parentArrowIcon" width="19" height="30" viewBox="0 0 19 30" fill="none" aria-hidden="true">
+                                            <use href="#menu-caret-right"></use>
+                                        </svg>
+                                    </span>
                                 </a>
                             </div>
                             <div class="parentItem" data-megamenu-parent="whats-happening">
                                 <a class="parentLink" href="/whats-happening">
                                     What's Happening
-                                    <span class="parentArrow">›</span>
+                                    <span class="parentArrow">
+                                        <svg class="parentArrowIcon" width="19" height="30" viewBox="0 0 19 30" fill="none" aria-hidden="true">
+                                            <use href="#menu-caret-right"></use>
+                                        </svg>
+                                    </span>
                                 </a>
                             </div>
                             <div class="parentItem" data-megamenu-parent="our-story">
                                 <a class="parentLink" href="/our-story">
                                     Our Story
-                                    <span class="parentArrow">›</span>
+                                    <span class="parentArrow">
+                                        <svg class="parentArrowIcon" width="19" height="30" viewBox="0 0 19 30" fill="none" aria-hidden="true">
+                                            <use href="#menu-caret-right"></use>
+                                        </svg>
+                                    </span>
                                 </a>
                             </div>
                             <div class="parentItem" data-megamenu-parent="watch-resources">
                                 <a class="parentLink" href="/resources">
                                     Watch &amp; Resources
-                                    <span class="parentArrow">›</span>
+                                    <span class="parentArrow">
+                                        <svg class="parentArrowIcon" width="19" height="30" viewBox="0 0 19 30" fill="none" aria-hidden="true">
+                                            <use href="#menu-caret-right"></use>
+                                        </svg>
+                                    </span>
                                 </a>
                             </div>
                             <div class="parentItem">
@@ -203,30 +260,62 @@
                             <nav class="parentLinks">
                                 <div class="parentItem mobileParentItem" data-megamenu-mobile-item="experience">
                                     <button type="button" class="primaryLink mobileParentGroupButton" data-megamenu-mobile-toggle="experience">
-                                        <span class="mobileParentLeftArrow" data-megamenu-mobile-arrow>‹</span>
+                                        <span class="mobileParentLeftArrow" data-megamenu-mobile-arrow>
+                                            <svg class="mobileParentLeftArrowIcon" width="19" height="30" viewBox="0 0 19 30" fill="none" aria-hidden="true">
+                                                <use href="#menu-caret-left"></use>
+                                            </svg>
+                                        </span>
                                         <span>Experience Ada Bible</span>
-                                        <span class="parentArrow">›</span>
+                                        <span class="parentArrow">
+                                        <svg class="parentArrowIcon" width="19" height="30" viewBox="0 0 19 30" fill="none" aria-hidden="true">
+                                            <use href="#menu-caret-right"></use>
+                                        </svg>
+                                    </span>
                                     </button>
                                 </div>
                                 <div class="parentItem mobileParentItem" data-megamenu-mobile-item="whats-happening">
                                     <button type="button" class="primaryLink mobileParentGroupButton" data-megamenu-mobile-toggle="whats-happening">
-                                        <span class="mobileParentLeftArrow" data-megamenu-mobile-arrow>‹</span>
+                                        <span class="mobileParentLeftArrow" data-megamenu-mobile-arrow>
+                                            <svg class="mobileParentLeftArrowIcon" width="19" height="30" viewBox="0 0 19 30" fill="none" aria-hidden="true">
+                                                <use href="#menu-caret-left"></use>
+                                            </svg>
+                                        </span>
                                         <span>What's Happening</span>
-                                        <span class="parentArrow">›</span>
+                                        <span class="parentArrow">
+                                        <svg class="parentArrowIcon" width="19" height="30" viewBox="0 0 19 30" fill="none" aria-hidden="true">
+                                            <use href="#menu-caret-right"></use>
+                                        </svg>
+                                    </span>
                                     </button>
                                 </div>
                                 <div class="parentItem mobileParentItem" data-megamenu-mobile-item="our-story">
                                     <button type="button" class="primaryLink mobileParentGroupButton" data-megamenu-mobile-toggle="our-story">
-                                        <span class="mobileParentLeftArrow" data-megamenu-mobile-arrow>‹</span>
+                                        <span class="mobileParentLeftArrow" data-megamenu-mobile-arrow>
+                                            <svg class="mobileParentLeftArrowIcon" width="19" height="30" viewBox="0 0 19 30" fill="none" aria-hidden="true">
+                                                <use href="#menu-caret-left"></use>
+                                            </svg>
+                                        </span>
                                         <span>Our Story</span>
-                                        <span class="parentArrow">›</span>
+                                        <span class="parentArrow">
+                                        <svg class="parentArrowIcon" width="19" height="30" viewBox="0 0 19 30" fill="none" aria-hidden="true">
+                                            <use href="#menu-caret-right"></use>
+                                        </svg>
+                                    </span>
                                     </button>
                                 </div>
                                 <div class="parentItem mobileParentItem" data-megamenu-mobile-item="watch-resources">
                                     <button type="button" class="primaryLink mobileParentGroupButton" data-megamenu-mobile-toggle="watch-resources">
-                                        <span class="mobileParentLeftArrow" data-megamenu-mobile-arrow>‹</span>
+                                        <span class="mobileParentLeftArrow" data-megamenu-mobile-arrow>
+                                            <svg class="mobileParentLeftArrowIcon" width="19" height="30" viewBox="0 0 19 30" fill="none" aria-hidden="true">
+                                                <use href="#menu-caret-left"></use>
+                                            </svg>
+                                        </span>
                                         <span>Watch &amp; Resources</span>
-                                        <span class="parentArrow">›</span>
+                                        <span class="parentArrow">
+                                        <svg class="parentArrowIcon" width="19" height="30" viewBox="0 0 19 30" fill="none" aria-hidden="true">
+                                            <use href="#menu-caret-right"></use>
+                                        </svg>
+                                    </span>
                                     </button>
                                 </div>
                                 <div class="parentItem mobileParentItem">
