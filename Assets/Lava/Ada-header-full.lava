@@ -37,18 +37,6 @@
                             <a class="desktopNavLink" href="/locations"><span>Locations</span></a>
                             <a class="desktopNavLink" href="/give"><span>Give</span></a> {% endcomment %}
 
-                            <a href="/page/1166" class="desktopNavLink">Giving</a>
-
-                            <a href="/page/961" class="desktopNavLink">Prayer Chain</a>
-
-                            <a href="/page/1289" class="desktopNavLink">Volunteer Application</a>
-
-                            <a href="/ChangeMyPassword" class="desktopNavLink">Change Password</a>
-
-                            <a href="/beyond-the-weekend" class="desktopNavLink">Beyond the Weekend Signup</a>
-
-                            <a href="/sermon-discussion-guide" class="desktopNavLink">Sermon Discussion Guide</a>
-
                             {% comment %} <a class="desktopNavLink" href="https://www.adabible.org">Main Site</a> {% endcomment %}
                             {% if CurrentPerson.FullName %}
                             <a class="desktopNavLink" href="/MyAccount">Logged in as: {{ CurrentPerson.FullName }}</a>
@@ -96,17 +84,6 @@
            display on) to match. -->
             <div class="mobileHeaderLinksRow">
                 <nav class="mobileHeaderLinks">
-                    <a href="/page/1166" class="mobileHeaderLink">Giving</a>
-
-                    <a href="/page/961" class="mobileHeaderLink">Prayer Chain</a>
-
-                    <a href="/page/1289" class="mobileHeaderLink">Volunteer Application</a>
-
-                    <a href="/ChangeMyPassword" class="mobileHeaderLink">Change Password</a>
-
-                    <a href="/beyond-the-weekend" class="mobileHeaderLink">Beyond the Weekend Signup</a>
-
-                    <a href="/sermon-discussion-guide" class="mobileHeaderLink">Sermon Discussion Guide</a>
 
                     {% if CurrentPerson.FullName %}
                     <a class="mobileHeaderLink" href="/MyAccount">Logged in as: {{ CurrentPerson.FullName }}</a>
@@ -267,10 +244,10 @@
                                         </span>
                                         <span>Experience Ada Bible</span>
                                         <span class="parentArrow">
-                                        <svg class="parentArrowIcon" width="19" height="30" viewBox="0 0 19 30" fill="none" aria-hidden="true">
-                                            <use href="#menu-caret-right"></use>
-                                        </svg>
-                                    </span>
+                                            <svg class="parentArrowIcon" width="19" height="30" viewBox="0 0 19 30" fill="none" aria-hidden="true">
+                                                <use href="#menu-caret-right"></use>
+                                            </svg>
+                                        </span>
                                     </button>
                                 </div>
                                 <div class="parentItem mobileParentItem" data-megamenu-mobile-item="whats-happening">
@@ -282,10 +259,10 @@
                                         </span>
                                         <span>What's Happening</span>
                                         <span class="parentArrow">
-                                        <svg class="parentArrowIcon" width="19" height="30" viewBox="0 0 19 30" fill="none" aria-hidden="true">
-                                            <use href="#menu-caret-right"></use>
-                                        </svg>
-                                    </span>
+                                            <svg class="parentArrowIcon" width="19" height="30" viewBox="0 0 19 30" fill="none" aria-hidden="true">
+                                                <use href="#menu-caret-right"></use>
+                                            </svg>
+                                        </span>
                                     </button>
                                 </div>
                                 <div class="parentItem mobileParentItem" data-megamenu-mobile-item="our-story">
@@ -297,10 +274,10 @@
                                         </span>
                                         <span>Our Story</span>
                                         <span class="parentArrow">
-                                        <svg class="parentArrowIcon" width="19" height="30" viewBox="0 0 19 30" fill="none" aria-hidden="true">
-                                            <use href="#menu-caret-right"></use>
-                                        </svg>
-                                    </span>
+                                            <svg class="parentArrowIcon" width="19" height="30" viewBox="0 0 19 30" fill="none" aria-hidden="true">
+                                                <use href="#menu-caret-right"></use>
+                                            </svg>
+                                        </span>
                                     </button>
                                 </div>
                                 <div class="parentItem mobileParentItem" data-megamenu-mobile-item="watch-resources">
@@ -312,10 +289,10 @@
                                         </span>
                                         <span>Watch &amp; Resources</span>
                                         <span class="parentArrow">
-                                        <svg class="parentArrowIcon" width="19" height="30" viewBox="0 0 19 30" fill="none" aria-hidden="true">
-                                            <use href="#menu-caret-right"></use>
-                                        </svg>
-                                    </span>
+                                            <svg class="parentArrowIcon" width="19" height="30" viewBox="0 0 19 30" fill="none" aria-hidden="true">
+                                                <use href="#menu-caret-right"></use>
+                                            </svg>
+                                        </span>
                                     </button>
                                 </div>
                                 <div class="parentItem mobileParentItem">

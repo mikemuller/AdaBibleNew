@@ -124,8 +124,8 @@
                     <div class="largeWrap" data-megamenu-largewrap>
                         <nav class="parentLinks">
                             <div class="parentItem" data-megamenu-parent="experience">
-                                <a class="parentLink" href="/experience">
-                                    Experience Ada Bible
+                                <a class="parentLink" href="/MyAccount">
+                                    My Account
                                     <span class="parentArrow">
                                         <svg class="parentArrowIcon" width="19" height="30" viewBox="0 0 19 30" fill="none" aria-hidden="true">
                                             <use href="#menu-caret-right"></use>
@@ -133,7 +133,7 @@
                                     </span>
                                 </a>
                             </div>
-                            <div class="parentItem" data-megamenu-parent="whats-happening">
+                            {% comment %} <div class="parentItem" data-megamenu-parent="whats-happening">
                                 <a class="parentLink" href="/whats-happening">
                                     What's Happening
                                     <span class="parentArrow">
@@ -165,7 +165,7 @@
                             </div>
                             <div class="parentItem">
                                 <a class="parentLink" href="/digital-bulletins/pits-trees-and-foundations">Digital Bulletin</a>
-                            </div>
+                            </div> {% endcomment %}
                         </nav>
 
                         <div class="rightSide">
@@ -200,13 +200,20 @@
 
                             <div class="subNavPanelWrap" data-megamenu-subnav-wrap>
                                 <nav class="subNavPanel" data-megamenu-subnav-panel="experience">
-                                    <a class="subNavLink" href="/visit">Visit</a>
+                                    {% comment %} <a class="subNavLink" href="/visit">Visit</a>
                                     <a class="subNavLink" href="/ministries">Ministries</a>
                                     <a class="subNavLink" href="/discipleship">Discipleship Journey</a>
                                     <a class="subNavLink" href="/join-a-group">Groups</a>
                                     <a class="subNavLink" href="/serve">Serve</a>
                                     <a class="subNavLink" href="/baptism">Baptism</a>
-                                    <a class="subNavLink" href="/membership">Become a Member</a>
+                                    <a class="subNavLink" href="/membership">Become a Member</a> {% endcomment %}
+
+                                    <a class="subNavLink" href="/page/1166">Giving</a>
+                                    <a class="subNavLink" href="/page/961">Prayer Chain</a>
+                                    <a class="subNavLink" href="/page/1289">Volunteer Application</a>
+                                    <a class="subNavLink" href="/ChangeMyPassword">Change Password</a>
+                                    <a class="subNavLink" href="/beyond-the-weekend">Beyond the Weekend Signup</a>
+                                    <a class="subNavLink" href="/sermon-discussion-guide">Sermon Discussion Guide</a>
                                 </nav>
                                 <nav class="subNavPanel" data-megamenu-subnav-panel="whats-happening">
                                     <a class="subNavLink" href="/sermons/pits-trees-and-foundations">Latest Sermon</a>

@@ -88,6 +88,18 @@
       <main>
         <Rock:Zone Name="AdaHero" runat="server" />
 
+        <div class="container">
+        <div class="row">
+        <div class="col-md-12">
+                    <Rock:Zone Name="Header" runat="server" />
+
+        </div>
+        </div>
+
+        </div>
+
+
+
           <div id="iFrameContainer" runat="server">
               <Rock:Zone Name="iFrameCell" runat="server" />
           </div>
