@@ -457,6 +457,10 @@
 
     &.mobileParentGroupButtonActive {
       color: #fffdf199;
+
+      .parentArrow {
+        display: none;
+      }
     }
   }
 

@@ -1226,6 +1226,9 @@ strong {
 .megaMenu .mobileParentGroupButton.mobileParentGroupButtonActive {
   color: rgba(255, 253, 241, 0.6);
 }
+.megaMenu .mobileParentGroupButton.mobileParentGroupButtonActive .parentArrow {
+  display: none;
+}
 .megaMenu .mobileParentItem {
   max-height: 72px;
   overflow: hidden;
