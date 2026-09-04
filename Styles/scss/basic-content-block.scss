@@ -1,0 +1,56 @@
+// Basic Content block ("Every week, we gather for worship" section),
+// extracted from AdaBiblePayload: src/blocks/BasicContentBlock/Component.tsx
+// + index.module.scss, as seen live at adabible.org/new-to-ada-bible.
+//
+// This instance: backgroundColor "white", a single column sized "twoThirds".
+// Only the column sizes actually used across this build are reproduced
+// (full/twoThirds); see the source for the complete oneQuarter/oneThird/half
+// scale. Everything nested under .basicContentBlock so generic names like
+// .grid don't leak into unrelated elements elsewhere on the page.
+
+@use './shared' as *;
+
+.basicContentBlock {
+  &.white .fillColumnContent .html {
+    p,
+    li {
+      color: var(--color-main);
+    }
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 2rem;
+
+    @include mid-break {
+      gap: 1rem;
+    }
+  }
+
+  .gridColumn {
+    grid-column: span 12;
+
+    &.twoThirds {
+      @media (min-width: 769px) {
+        grid-column: span 8;
+      }
+
+      @include extra-small-break {
+        grid-column: span 12;
+      }
+    }
+  }
+
+  .fillColumnContent {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+      max-width: none;
+    }
+  }
+}

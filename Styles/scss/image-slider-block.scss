@@ -1,0 +1,332 @@
+// Image Slider block ("Experience Ada Bible" section), extracted from
+// AdaBiblePayload: src/blocks/ImageSliderBlock/Client.tsx +
+// index.module.scss + src/components/Slide + src/components/ExpandedContentField,
+// as seen live at adabible.org/new-to-ada-bible (section id="Template Image
+// Slider"). Prev/next + active-slide-highlight behavior wired up in
+// Scripts/new-to-ada-bible.js.
+//
+// This instance: backgroundColor "black", six slides (Visit/Ministries/
+// Groups/Volunteer/Attend an Event/Learn More), each linking out to its own
+// page. The horizontal scrollbar (src/utilities/useHorizontalScrollbar.ts)
+// tracks real overflow — rail width vs. the slide list's scrollWidth — so
+// its thumb width/position is computed and kept in sync by
+// Scripts/new-to-ada-bible.js rather than hardcoded here; only shows once
+// the slides actually overflow the rail, matching the source's
+// shouldShowScrollbar.
+//
+// Everything nested under .imageSlider so generic names like .slide/
+// .content don't leak into unrelated elements elsewhere on the page (this
+// is the same class of bug that previously broke the hero's .content
+// column via cta-block.scss's unscoped .content rule).
+
+@use './shared' as *;
+
+.imageSlider {
+  --image-slider-scroll-track: #313133;
+  --image-slider-scroll-thumb: linear-gradient(
+    90.08deg,
+    rgba(187, 209, 98, 0.7) 10.52%,
+    rgba(29, 149, 175, 0.7) 125.84%
+  );
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  h2 {
+    font-family: var(--font-montserrat), var(--font-heading);
+    font-weight: 600;
+    max-width: 768px;
+  }
+
+  .expandedContentField {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--gap);
+    width: 100%;
+    align-items: center;
+    margin-bottom: 64px;
+
+    &.black {
+      color: white;
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      p {
+        color: white;
+      }
+    }
+
+    @include mid-break {
+      flex-direction: column;
+      align-items: unset;
+      gap: 0;
+    }
+  }
+
+  .headingSection {
+    min-width: 0;
+    width: 100%;
+    max-width: 768px;
+    flex: 1 1 768px;
+
+    @include mid-break {
+      flex: 1 1 auto;
+      max-width: none;
+    }
+  }
+
+  .actionSection {
+    align-self: center;
+    width: auto;
+    max-width: none;
+    flex: 0 0 auto;
+    margin-left: auto;
+
+    ul {
+      @include list-reset;
+      display: flex;
+      gap: var(--xs-gap, 16px);
+      justify-content: flex-end;
+    }
+
+    @include mid-break {
+      align-self: auto;
+      width: 100%;
+      margin-left: 0;
+    }
+
+    @include small-break {
+      ul {
+        display: none;
+      }
+    }
+  }
+
+  .imageArrayWrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  .imageArray {
+    @include list-reset;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: 100%;
+    scroll-padding-left: 40px;
+    gap: 40px;
+    padding: var(--gap) 40px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    li {
+      flex: 0 0 418px;
+      width: 418px;
+    }
+
+    @include small-break {
+      gap: 20px;
+      padding: var(--gap) 0 var(--gap) 20px;
+      scroll-padding-left: 20px;
+
+      li {
+        flex: 0 0 calc((100% - 20px - 20px) / 1.25);
+        width: calc((100% - 20px - 20px) / 1.25);
+      }
+    }
+  }
+
+  .sliderSlide {
+    scroll-snap-align: start;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .slideWrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    > :not(.gradientPattern) {
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  // Slide (src/components/Slide): the individual image tile — photo,
+  // gradient readability fade, headline + arrow-corner icon, full-tile link.
+  .slide {
+    display: flex;
+    scroll-snap-align: start;
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    width: 100%;
+    height: 500px;
+    aspect-ratio: 0.834;
+    @include gradient-border-hover;
+
+    &:hover .slideHeadline {
+      text-decoration: underline;
+    }
+
+    img {
+      min-width: 100%;
+      min-height: 100%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    @include small-break {
+      height: auto;
+      aspect-ratio: 6/7;
+    }
+  }
+
+  .slideImageWrap {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    @include readability-gradient;
+  }
+
+  .slideContentWrap {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+  }
+
+  .slideContent {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--small-gap);
+    padding: 0 24px 20px;
+    pointer-events: none;
+
+    @include small-break {
+      padding: 0 20px 16px;
+    }
+  }
+
+  .slideHeadline {
+    @include h4-basic-sans;
+    margin: 0;
+    line-height: 1;
+    align-self: flex-end;
+    color: var(--color-white);
+  }
+
+  .slideIcon {
+    width: 21px;
+    height: 21px;
+    flex: 0 0 auto;
+    align-self: flex-end;
+    color: var(--color-white);
+  }
+
+  .slideLink {
+    position: absolute;
+    inset: 0;
+    background-color: transparent;
+    z-index: 3;
+  }
+
+  .srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .scrollbarRow {
+    display: flex;
+    align-items: center;
+    gap: 96px;
+    margin-top: 20px;
+  }
+
+  .scrollbarRail {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .scrollbar {
+    flex: 1;
+    height: 15px;
+    position: relative;
+    border-radius: 0;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .scrollbarThumb {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    border-radius: 0;
+    background: var(--image-slider-scroll-thumb);
+    cursor: grab;
+    will-change: transform;
+  }
+
+  .scrollbarThumbDragging {
+    cursor: grabbing;
+  }
+
+  .sliderControls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-shrink: 0;
+
+    @include mid-break {
+      display: none;
+    }
+  }
+
+  .sliderControlBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border: 1px solid #2ba9a5;
+    border-radius: 6px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+    background-color: #313133;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #2ba9a5;
+      outline-offset: 2px;
+    }
+  }
+}

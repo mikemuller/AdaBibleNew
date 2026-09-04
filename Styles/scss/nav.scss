@@ -1,0 +1,12 @@
+.nav-pills {
+  display: block;
+
+  li {
+    a {
+      &:hover {
+        background-color: #262629;
+        color: #fff;
+      }
+    }
+  }
+}

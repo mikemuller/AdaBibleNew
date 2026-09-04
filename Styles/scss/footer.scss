@@ -1,0 +1,272 @@
+// Footer styles, extracted from AdaBiblePayload:
+// src/layout/Footer/index.module.scss + src/layout/Footer/Component.tsx
+//
+// The original Footer is wrapped in <Gutter> + <Padding> layout helpers.
+// The Gutter half is now the shared `.gutter.narrow` wrapper (Ada-footer.lava)
+// that every other block already uses, so .footerInner only needs to
+// reproduce the Padding half (vertical spacing) — giving it its own
+// max-width/horizontal padding too would double up with the wrapper's.
+
+@use './shared' as *;
+
+// Legacy theme.css still carries a bare `footer { padding: 130px 0; text-align:
+// center; font-size: 14px; }` element-selector rule (for the old Rock
+// `<footer><div class="containerx">...` zone wrapper). A class selector like
+// `.footer` always out-specifies a bare element selector, but only for the
+// properties it actually declares — anything left unset here still falls
+// through from that legacy rule. It was leaking a large extra top/bottom gap
+// and centering every column and link inside the new footer, so all four
+// properties are pinned back to sane values explicitly.
+.footer {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-main);
+  color: var(--color-white);
+  padding: 0;
+  text-align: left;
+  font-size: 16px;
+}
+
+.footerInner {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 100px 0 160px;
+
+  @include mid-break {
+    padding: 56px 0 96px;
+  }
+}
+
+// footer wrap (desktop)
+
+.footerWrapLarge {
+  position: relative;
+  isolation: isolate;
+  border-radius: 24px;
+  border: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  color: white;
+
+  @include small-break {
+    display: none;
+  }
+
+  .top,
+  .bottom {
+    padding: 64px;
+  }
+
+  .top {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    width: 100%;
+    height: 100%;
+
+    .divOne,
+    .divTwo {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .columns {
+      display: flex;
+      gap: 96px;
+    }
+
+    // theme.css still carries a bare `.col { flex: 1 0 0; padding-left: 15px;
+    // padding-right: 15px; }` rule (an old Bootstrap-grid-style equal-width
+    // column utility). It was forcing all three nav columns to the same
+    // grown width regardless of content — wrapping labels like "Discipleship
+    // Journey" and "Become a Member" onto two lines — and indenting each
+    // column's content 15px further right than the row above it. Resetting
+    // `flex`/`padding` here (this selector's extra ancestor classes already
+    // out-specify the bare `.col`) lets each column size to its own content,
+    // matching adabible.org's layout.
+    .col {
+      display: flex;
+      flex-direction: column;
+      flex: 0 1 auto;
+      gap: 16px;
+      padding: 0;
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+  }
+
+  .bottom {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid white;
+
+    .socialsBlock {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+  }
+
+  .list {
+    display: flex;
+    width: 100%;
+    gap: var(--small-gap);
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .divThree .list {
+    justify-content: flex-end;
+  }
+}
+
+// footer wrap (mobile)
+
+.footerWrapSmall {
+  position: relative;
+  isolation: isolate;
+  border-radius: 12px;
+  border: 1px solid white;
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  color: white;
+  overflow: hidden;
+
+  @include small-break {
+    display: flex;
+  }
+
+  .divOne,
+  .divTwo,
+  .divThree {
+    @include small-break {
+      background-color: var(--color-black);
+    }
+  }
+
+  .divOne,
+  .divTwo,
+  .divThree,
+  .divFour {
+    padding: 36px 24px;
+
+    .list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--small-gap);
+
+      @include small-break {
+        gap: 12px;
+      }
+    }
+  }
+
+  .divOne,
+  .divTwo,
+  .divThree {
+    border-bottom: 1px solid var(--color-off-white);
+  }
+
+  .divThree {
+    border-radius: 0 0 12px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--small-gap);
+
+    @include small-break {
+      gap: 12px;
+    }
+  }
+
+  .divFour {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: var(--small-gap);
+  }
+
+  .divTwo {
+    .columns {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap);
+
+      // Same legacy `.col` leak as the desktop version above — flex-direction
+      // is column here, so the leaked `flex: 1 0 0` mostly just wastes
+      // vertical growth, but the 15px left/right padding still indents this
+      // column's content past the row above it.
+      .col {
+        display: flex;
+        flex-direction: column;
+        flex: 0 1 auto;
+        gap: 12px;
+        padding: 0;
+
+        ul {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
+
+          li {
+            flex: 0 0 calc(33.3% - 8px);
+
+            @include small-break {
+              flex: 0 0 calc(50% - 6px);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .logo {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+// link styles
+
+.primaryLink {
+  color: white;
+  font-style: italic;
+  text-decoration: underline;
+}
+
+.secondaryLink {
+  color: var(--color-light-gray);
+}
+
+// socials (from src/components/Socials/index.module.scss)
+
+.socials {
+  display: flex;
+  gap: var(--small-gap);
+  align-items: center;
+
+  @include small-break {
+    gap: 12px;
+  }
+}
+
+.socialItem {
+  color: white;
+  font-style: italic;
+  text-decoration: underline;
+}
+
+.socialIcon {
+  display: block;
+}

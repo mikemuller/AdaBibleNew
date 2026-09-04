@@ -9,7 +9,7 @@
 @import '_variable-overrides.less';
 @import '_print.less';
 
-@import 'ada-styles/ada-foundation.css';
+//@import 'ada-styles/ada-foundation.css';
 
 /*
     Rock Theme Styles
@@ -24,10 +24,18 @@
 // -------------------------
 html {
   -webkit-font-smoothing: antialiased;
+  // Several decorative elements (e.g. the Medium Impact Hero's .imageGradient
+  // bleed, Styles/scss/medium-impact-hero.scss) intentionally position
+  // themselves past their container's edge for an edge-to-edge visual
+  // effect. Nothing downstream clips that horizontally, so it was widening
+  // the document and creating a page-wide horizontal scrollbar. Clip it here
+  // instead of chasing every offending component individually.
+  overflow-x: hidden;
 }
 
 body {
   background-color: @body-bg;
+  overflow-x: hidden;
 }
 
 main {
@@ -1286,7 +1294,7 @@ p.thinkboxcreative {
 }
 
 .four-buttons {
-  max-width: 80%;
+  max-width: 100%;
   // margin-left: auto;
   // margin-right: auto;
   display: flex;

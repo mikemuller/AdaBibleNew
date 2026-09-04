@@ -11,15 +11,9 @@
                     <div class="divOne">
                         <div>
                             <ul class="list">
-                                {% comment %} <li class="primaryLink"><a href="/page/1166">Giving</a></li>
-                                <li class="primaryLink"><a href="/page/961">Prayer Chain</a></li>
-                                <li class="primaryLink"><a href="/page/1289">Volunteer Application</a></li>
-                                <li class="primaryLink"> <a href="/ChangeMyPassword">Change Password</a></li>
-                                <li class="primaryLink"> <a href="/beyond-the-weekend">Beyond the Weekend Signup</a></li>
-                                <li class="primaryLink"><a href="/sermon-discussion-guide">Sermon Discussion Guide</a></li> {% endcomment %}
-                                {% comment %} <li class="primaryLink"><a href="/locations">Locations</a></li>
+                                <li class="primaryLink"><a href="/locations">Locations</a></li>
                                 <li class="primaryLink"><a href="/resources">Resources</a></li>
-                                <li class="primaryLink"><a href="/resources?type=digitalBulletins">Digital Bulletin</a></li> {% endcomment %}
+                                <li class="primaryLink"><a href="/resources?type=digitalBulletins">Digital Bulletin</a></li>
                             </ul>
                         </div>
                         <div>
@@ -34,51 +28,43 @@
                     <div class="divTwo">
                         <div class="columns">
                             <div class="col">
-                                <span class="primaryLink"><a href="/MyAccount">My Account</a></span>
+                                <span class="primaryLink"><a href="/experience">Experience Ada Bible</a></span>
                                 <ul>
-                                    <li class="secondaryLink"><a href="/page/1166">Giving</a></li>
-                                    <li class="secondaryLink"><a href="/page/961">Prayer Chain</a></li>
-                                    <li class="secondaryLink"><a href="/page/1289">Volunteer Application</a></li>
-                                    <li class="secondaryLink"> <a href="/ChangeMyPassword">Change Password</a></li>
-                                    <li class="secondaryLink"> <a href="/beyond-the-weekend">Beyond the Weekend Signup</a></li>
-                                    <li class="secondaryLink"><a href="/sermon-discussion-guide">Sermon Discussion Guide</a></li>
-
-
-                                    {% comment %} <li class="secondaryLink"><a href="/visit">Visit</a></li>
+                                    <li class="secondaryLink"><a href="/visit">Visit</a></li>
                                     <li class="secondaryLink"><a href="/ministries">Ministries</a></li>
                                     <li class="secondaryLink"><a href="/discipleship">Discipleship Journey</a></li>
                                     <li class="secondaryLink"><a href="/join-a-group">Groups</a></li>
                                     <li class="secondaryLink"><a href="/serve">Serve</a></li>
                                     <li class="secondaryLink"><a href="/baptism">Baptism</a></li>
-                                    <li class="secondaryLink"><a href="/membership">Become a Member</a></li> {% endcomment %}
+                                    <li class="secondaryLink"><a href="/membership">Become a Member</a></li>
                                 </ul>
                             </div>
 
                             <div class="col">
-                                {% comment %} <span class="primaryLink"><a href="/whats-happening">What's Happening</a></span>
+                                <span class="primaryLink"><a href="/whats-happening">What's Happening</a></span>
                                 <ul>
                                     <li class="secondaryLink"><a href="/resources?type=sermonSeries">Sermon Series</a></li>
                                     <li class="secondaryLink"><a href="/resources?type=devotionals">Beyond the Weekend</a></li>
                                     <li class="secondaryLink"><a href="/events">Events</a></li>
-                                </ul> {% endcomment %}
+                                </ul>
                             </div>
 
                             <div class="col">
-                                {% comment %} <span class="primaryLink"><a href="/our-story">Our Story</a></span>
+                                <span class="primaryLink"><a href="/our-story">Our Story</a></span>
                                 <ul>
                                     <li class="secondaryLink"><a href="/our-story/leadership">Leadership</a></li>
                                     <li class="secondaryLink"><a href="/missions">Missions</a></li>
                                     <li class="secondaryLink"><a href="/we-believe">We Believe</a></li>
                                     <li class="secondaryLink"><a href="/salvation">Salvation</a></li>
-                                </ul> {% endcomment %}
+                                </ul>
                             </div>
                         </div>
 
                         <div class="divThree">
-                            {% comment %} <ul class="list">
+                            <ul class="list">
                                 <li class="primaryLink"><a href="https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=7cf68e81-e476-4cf2-8a3d-0b6628f92fdc&amp;ccId=19000101_000001&amp;type=MP&amp;lang=en_US">Ada Bible Careers</a></li>
                                 <li class="primaryLink"><a href="/jobs">Community Job Board</a></li>
-                            </ul> {% endcomment %}
+                            </ul>
                         </div>
                     </div>
                 </section>
@@ -138,64 +124,54 @@
             <!-- ================= MOBILE ================= -->
             <div class="footerWrapSmall">
                 <div class="divOne">
-                    {% comment %} <ul class="list">
+                    <ul class="list">
                         <li class="primaryLink"><a href="/locations">Locations</a></li>
                         <li class="primaryLink"><a href="/resources">Resources</a></li>
                         <li class="primaryLink"><a href="/resources?type=digitalBulletins">Digital Bulletin</a></li>
-
-                    </ul> {% endcomment %}
+                    </ul>
                 </div>
 
                 <div class="divTwo">
                     <div class="columns">
                         <div class="col">
-                            <span class="primaryLink"><a href="/MyAccount">My Account</a></span>
+                            <span class="primaryLink"><a href="/experience">Experience Ada Bible</a></span>
                             <ul>
-
-                                <li class="secondaryLink"><a href="/page/1166">Giving</a></li>
-                                <li class="secondaryLink"><a href="/page/961">Prayer Chain</a></li>
-                                <li class="secondaryLink"><a href="/page/1289">Volunteer Application</a></li>
-                                <li class="secondaryLink"> <a href="/ChangeMyPassword">Change Password</a></li>
-                                <li class="secondaryLink"> <a href="/beyond-the-weekend">Beyond the Weekend Signup</a></li>
-                                <li class="secondaryLink"><a href="/sermon-discussion-guide">Sermon Discussion Guide</a></li>
-
-
-                                {% comment %} <li class="secondaryLink"><a href="/visit">Visit</a></li>
+                                <li class="secondaryLink"><a href="/visit">Visit</a></li>
                                 <li class="secondaryLink"><a href="/ministries">Ministries</a></li>
                                 <li class="secondaryLink"><a href="/discipleship">Discipleship Journey</a></li>
                                 <li class="secondaryLink"><a href="/join-a-group">Groups</a></li>
                                 <li class="secondaryLink"><a href="/serve">Serve</a></li>
                                 <li class="secondaryLink"><a href="/baptism">Baptism</a></li>
-                                <li class="secondaryLink"><a href="/membership">Become a Member</a></li> {% endcomment %}
+                                <li class="secondaryLink"><a href="/membership">Become a Member</a></li>
                             </ul>
                         </div>
 
                         <div class="col">
-                            {% comment %} <span class="primaryLink"><a href="/whats-happening">What's Happening</a></span>
+                            <span class="primaryLink"><a href="/whats-happening">What's Happening</a></span>
                             <ul>
                                 <li class="secondaryLink"><a href="/resources?type=sermonSeries">Sermon Series</a></li>
                                 <li class="secondaryLink"><a href="/resources?type=devotionals">Beyond the Weekend</a></li>
                                 <li class="secondaryLink"><a href="/events">Events</a></li>
-                            </ul> {% endcomment %}
+                            </ul>
                         </div>
 
                         <div class="col">
-                            {% comment %} <span class="primaryLink"><a href="/our-story">Our Story</a></span>
+                            <span class="primaryLink"><a href="/our-story">Our Story</a></span>
                             <ul>
                                 <li class="secondaryLink"><a href="/our-story/leadership">Leadership</a></li>
                                 <li class="secondaryLink"><a href="/missions">Missions</a></li>
                                 <li class="secondaryLink"><a href="/we-believe">We Believe</a></li>
                                 <li class="secondaryLink"><a href="/salvation">Salvation</a></li>
-                            </ul> {% endcomment %}
+                            </ul>
                         </div>
                     </div>
                 </div>
 
                 <div class="divThree">
-                    {% comment %} <ul class="list">
+                    <ul class="list">
                         <li class="primaryLink"><a href="https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=7cf68e81-e476-4cf2-8a3d-0b6628f92fdc&amp;ccId=19000101_000001&amp;type=MP&amp;lang=en_US">Ada Bible Careers</a></li>
                         <li class="primaryLink"><a href="/jobs">Community Job Board</a></li>
-                    </ul> {% endcomment %}
+                    </ul>
 
                     <ul class="list">
                         <li class="primaryLink"><a href="https://my.adabible.org/contact">Get in Touch</a></li>
