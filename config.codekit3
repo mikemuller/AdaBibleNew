@@ -1286,6 +1286,19 @@
       "oS" : 0,
       "pg" : 0
     },
+    "\/Styles\/scss\/nav.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/Styles\/scss\/nav.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0
+    },
     "\/Styles\/theme.css" : {
       "aP" : 1,
       "bl" : 0,

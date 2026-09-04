@@ -1940,6 +1940,14 @@ strong {
   display: block;
 }
 
+.nav-pills {
+  display: block;
+}
+.nav-pills li a:hover {
+  background-color: #262629;
+  color: #fff;
+}
+
 .ctaBlock.white {
   color: #313133;
 }
