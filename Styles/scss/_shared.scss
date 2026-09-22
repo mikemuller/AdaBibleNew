@@ -426,6 +426,18 @@ ol {
   padding: 0;
 }
 
+#zone-main {
+
+  ul {
+    list-style: inherit;
+    margin: 20px;
+  }
+
+}
+
+
+
+
 a {
   color: inherit;
   text-decoration: inherit;
@@ -509,6 +521,10 @@ strong {
 
   &.narrow {
     @include layout-shell($with-outline: true);
+
+    .container {
+      width: 100%;
+    }
   }
 }
 

@@ -87,6 +87,11 @@ ol {
   padding: 0;
 }
 
+#zone-main ul {
+  list-style: inherit;
+  margin: 20px;
+}
+
 a {
   color: inherit;
   text-decoration: inherit;
@@ -204,6 +209,9 @@ strong {
     padding-left: 20px;
     padding-right: 20px;
   }
+}
+.gutter.narrow .container {
+  width: 100%;
 }
 
 .padding {

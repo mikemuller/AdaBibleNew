@@ -98,6 +98,7 @@
 
         </div>
 
+                            <%-- <Rock:PageTitle ID="PageTitle" runat="server" /> --%>
 
 
           <div id="iFrameContainer" runat="server">

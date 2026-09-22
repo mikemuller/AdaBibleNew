@@ -25,6 +25,22 @@
       "oAP" : "\/.gitignore",
       "oF" : 0
     },
+    "\/.vscode\/sftp-DEV.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/.vscode\/sftp-DEV-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/.vscode\/sftp-LIVE.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/.vscode\/sftp-LIVE-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
     "\/.vscode\/sftp.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -1138,8 +1154,8 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/Styles\/scss\/ada.css",
-      "oF" : 0,
+      "oAP" : "\/Styles\/ada.css",
+      "oF" : 2,
       "oS" : 0,
       "pg" : 0
     },

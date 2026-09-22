@@ -14,13 +14,13 @@
         </div>
 
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-10 col-md-offset-2 col-sm-offset-0">
                 <Rock:Zone Name="Sub Feature" runat="server" />
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-10 col-md-offset-2 col-sm-offset-0">
                 <Rock:Zone Name="Main" runat="server" />
             </div>
         </div>
